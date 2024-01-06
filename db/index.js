@@ -4,6 +4,8 @@ import dotnet from 'dotenv';
 
 dotnet.config()
 
-export const sequelize = new Sequelize(`${process.env.POSTGRESQL_DB_URI}`)
+export const sequelize = new Sequelize(`${process.env.POSTGRESQL_DB_URI}`, {
+  logging: false,
+})
 
 export const usersTB = Users(sequelize)
