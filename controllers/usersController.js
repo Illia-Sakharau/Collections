@@ -1,4 +1,4 @@
-import { sequelize, usersTB } from "../db/index.js";
+import { usersTB } from "../db/index.js";
 
 class usersController {
   async getUsers (req, res) {
