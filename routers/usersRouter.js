@@ -1,8 +1,9 @@
 import { Router } from 'express';
 import userController from '../controllers/usersController.js'
+import adminMiddleware from '../middleware/adminMiddleware.js'
 
 const router = new Router();
 
-router.get('/all', userController.getUsers)
+router.get('/all', adminMiddleware, userController.getUsers)
 
 export default router;
