@@ -1,14 +1,16 @@
 import { UsersTB } from "../db/index.js";
+import bcrypt from 'bcryptjs';
 
 class authController {
   async login (req, res) {
     try {
       const {email, password} = req.body;
       const user = await UsersTB.findOne({ where: { email } });
-      const isValidPassword = password == user.password;
+      const isValidPassword = bcrypt.compareSync(password, user.password);
       if (!user || !isValidPassword) {
           return res.status(400).json({message: `Invalid email or password!`})
       }
+
       return res.json(user)
     } catch (error) {
       console.log(error);
@@ -23,11 +25,12 @@ class authController {
       if (candidate) {
         return res.status(400).json({message: 'User with this email exists!'})
       }
+      const hashPassword = bcrypt.hashSync(password, 7);
 
       const user = await UsersTB.create({
         name, 
         email, 
-        password,
+        password: hashPassword,
       });
 
       return res.json(user)
