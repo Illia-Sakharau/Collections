@@ -1,5 +1,6 @@
 import { UsersTB } from "../db/index.js";
 import bcrypt from 'bcryptjs';
+import { prepareUserInfo } from "../utils/prepareUserInfo.js";
 
 class authController {
   async login (req, res) {
@@ -10,8 +11,7 @@ class authController {
       if (!user || !isValidPassword) {
           return res.status(400).json({message: `Invalid email or password!`})
       }
-
-      return res.json(user)
+      return res.json(prepareUserInfo(user))
     } catch (error) {
       console.log(error);
       res.status(400).json({message: 'Login error'})
@@ -33,7 +33,7 @@ class authController {
         password: hashPassword,
       });
 
-      return res.json(user)
+      return res.json(prepareUserInfo(user))
     } catch (error) {
       console.log(error);
       res.status(400).json({message: 'Registration error'})
