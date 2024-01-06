@@ -1,9 +1,9 @@
-import { usersTB } from "../db/index.js";
+import { UsersTB } from "../db/index.js";
 
 class usersController {
   async getUsers (req, res) {
     try {
-      const users = await usersTB.findAll();
+      const users = await UsersTB.findAll();
       res.json(users)
     } catch (error) {
       console.log(error);

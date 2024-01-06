@@ -8,4 +8,4 @@ export const sequelize = new Sequelize(`${process.env.POSTGRESQL_DB_URI}`, {
   logging: false,
 })
 
-export const usersTB = Users(sequelize)
+export const UsersTB = Users(sequelize)
