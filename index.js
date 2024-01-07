@@ -1,6 +1,7 @@
 import express from 'express';
 import usersRouter from './routers/usersRouter.js';
 import authRouter from './routers/authRouter.js';
+import tagsRouter from './routers/tagsRouter.js';
 import dotnet from 'dotenv';
 
 dotnet.config()
@@ -14,5 +15,6 @@ app.get('/', (req, res) => {res.send('Server worked')})
 app.use(express.json());
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
+app.use('/tags', tagsRouter);
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
