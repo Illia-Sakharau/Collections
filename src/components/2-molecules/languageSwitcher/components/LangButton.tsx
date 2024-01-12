@@ -7,6 +7,7 @@ type Props = languageInfo & ButtonProps;
 
 const LangButton: FC<Props> = ({ value, text, ...props }) => {
   const { i18n } = useTranslation();
+  const currentLang = i18n.language.split('-')[0];
 
   return (
     <Button
@@ -14,8 +15,8 @@ const LangButton: FC<Props> = ({ value, text, ...props }) => {
       size="sm"
       variant="ghost"
       px="2"
-      fontWeight={i18n.language === value ? 'bold' : 'medium'}
-      isActive={i18n.language === value}
+      fontWeight={currentLang === value ? 'bold' : 'medium'}
+      isActive={currentLang === value}
       onClick={() => i18n.changeLanguage(value)}
       {...props}
     >
