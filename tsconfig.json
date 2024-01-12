@@ -9,10 +9,11 @@
       "@/*": ["./src/*"],
       "@atoms/*": ["./src/components/1-atoms/*"],
       "@molecules/*": ["./src/components/2-molecules/*"],
-      "@organism/*": ["./src/components/3-organism/*"],
+      "@organisms/*": ["./src/components/3-organisms/*"],
       "@layouts/*": ["./src/components/4-layouts/*"],
       "@pages/*": ["./src/pages/*"]
     },
+    "types": ["vite-plugin-svgr/client"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",

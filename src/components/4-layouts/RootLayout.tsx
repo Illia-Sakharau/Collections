@@ -1,9 +1,10 @@
 import { Outlet } from 'react-router-dom';
+import Header from '@organisms/header/Header';
 
 const RootLayout = () => {
   return (
     <>
-      <header>HEADER</header>
+      <Header />
       <main>
         <Outlet />
       </main>

@@ -1,23 +1,26 @@
-import {
-  chakra,
-  keyframes,
-  ImageProps,
-  forwardRef,
-  usePrefersReducedMotion,
-} from '@chakra-ui/react';
-import logo from '@/assets/logo.svg';
+import { NavRoutes } from '@/router/routes';
+import { NavLink } from 'react-router-dom';
+import LogoIcon from '@/assets/logo.svg?react';
+import { useColorModeValue, useTheme } from '@chakra-ui/react';
 
-const spin = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-`;
+const Logo = () => {
+  const theme = useTheme();
+  console.log(theme.__cssVars['--chakra-colors-brand-300']);
 
-export const Logo = forwardRef<ImageProps, 'img'>((props, ref) => {
-  const prefersReducedMotion = usePrefersReducedMotion();
+  const fill = useColorModeValue(
+    theme.__cssVars['--chakra-colors-brand-500'],
+    theme.__cssVars['--chakra-colors-brand-300']
+  );
 
-  const animation = prefersReducedMotion
-    ? undefined
-    : `${spin} infinite 20s linear`;
+  return (
+    <NavLink to={NavRoutes.landingPagePath}>
+      <LogoIcon
+        style={{
+          fill,
+        }}
+      />
+    </NavLink>
+  );
+};
 
-  return <chakra.img animation={animation} src={logo} ref={ref} {...props} />;
-});
+export default Logo;

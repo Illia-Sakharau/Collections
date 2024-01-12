@@ -1,12 +1,10 @@
-import { Logo } from '@atoms/Logo';
-import { ColorModeSwitcher } from '@molecules/ColorModeSwitcher';
+import { Logo } from '@/components/1-atoms/AnimLogo';
 import { Box, Text, Grid, VStack, Code, Button } from '@chakra-ui/react';
 
 export default () => {
   return (
     <Box textAlign="center" fontSize="xl">
       <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
         <VStack spacing={8}>
           <Logo h="40vmin" pointerEvents="none" />
           <Text>
