@@ -11,7 +11,7 @@
       "@molecules/*": ["./src/components/2-molecules/*"],
       "@organism/*": ["./src/components/3-organism/*"],
       "@layouts/*": ["./src/components/4-layouts/*"],
-      "@pages/*": ["./src/pages/*"],
+      "@pages/*": ["./src/pages/*"]
     },
 
     /* Bundler mode */
