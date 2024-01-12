@@ -6,6 +6,13 @@ import * as path from 'path'
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+    alias: { 
+      '@': path.resolve(__dirname, 'src'),
+      '@atoms': path.resolve(__dirname, "src/components/1-atoms"),
+      '@molecules': path.resolve(__dirname, "src/components/2-molecules"),
+      '@organism': path.resolve(__dirname, "src/components/3-organism"),
+      '@layouts': path.resolve(__dirname, "src/components/4-layouts"),
+      '@pages': path.resolve(__dirname, "src/pages"),
+    },
   },
 });

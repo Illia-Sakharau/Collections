@@ -6,7 +6,12 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@atoms/*": ["./src/components/1-atoms/*"],
+      "@molecules/*": ["./src/components/2-molecules/*"],
+      "@organism/*": ["./src/components/3-organism/*"],
+      "@layouts/*": ["./src/components/4-layouts/*"],
+      "@pages/*": ["./src/pages/*"],
     },
 
     /* Bundler mode */
