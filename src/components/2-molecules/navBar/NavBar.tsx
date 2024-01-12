@@ -11,7 +11,7 @@ const NavBar: FC<Props> = ({ links, ...props }) => {
   return (
     <Flex gap={3} {...props}>
       {links.map((linkInfo) => (
-        <NavLink {...linkInfo} />
+        <NavLink {...linkInfo} key={linkInfo.text} />
       ))}
     </Flex>
   );
