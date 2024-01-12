@@ -5,11 +5,9 @@ import { useColorModeValue, useTheme } from '@chakra-ui/react';
 
 const Logo = () => {
   const theme = useTheme();
-  console.log(theme.__cssVars['--chakra-colors-brand-300']);
-
   const fill = useColorModeValue(
-    theme.__cssVars['--chakra-colors-brand-500'],
-    theme.__cssVars['--chakra-colors-brand-300']
+    theme.__cssVars['--chakra-colors-brand-600'],
+    theme.__cssVars['--chakra-colors-brand-400']
   );
 
   return (

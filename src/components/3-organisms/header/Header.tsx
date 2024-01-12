@@ -1,9 +1,11 @@
 import { ColorModeSwitcher } from '@molecules/ColorModeSwitcher';
 import Logo from '@atoms/Logo';
 import { Flex, Spacer, useColorModeValue } from '@chakra-ui/react';
+import NavBar from '@/components/2-molecules/navBar/NavBar';
+import { LINKS } from './constants';
 
 const Header = () => {
-  const bg = useColorModeValue('gray.200', 'gray.700');
+  const bg = useColorModeValue('gray.300', 'gray.700');
 
   return (
     <Flex
@@ -20,7 +22,7 @@ const Header = () => {
       <ColorModeSwitcher justifySelf="flex-end" mr="4" />
       <div>EN / РУС</div>
       <Spacer />
-      <div>NavBar</div>
+      <NavBar links={LINKS} />
       <div>BtnBar</div>
     </Flex>
   );
