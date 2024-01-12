@@ -3,9 +3,12 @@ import Logo from '@atoms/Logo';
 import { Flex, Spacer, useColorModeValue } from '@chakra-ui/react';
 import NavBar from '@/components/2-molecules/navBar/NavBar';
 import { LINKS } from './constants';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '@/components/2-molecules/languageSwitcher/LanguageSwitcher';
 
 const Header = () => {
   const bg = useColorModeValue('gray.300', 'gray.700');
+  const { t } = useTranslation();
 
   return (
     <Flex
@@ -20,10 +23,9 @@ const Header = () => {
       <Logo />
       <Spacer />
       <ColorModeSwitcher justifySelf="flex-end" mr="4" />
-      <div>EN / РУС</div>
+      <LanguageSwitcher />
       <Spacer />
-      <NavBar links={LINKS} />
-      <div>BtnBar</div>
+      <NavBar links={LINKS(t)} />
     </Flex>
   );
 };

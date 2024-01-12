@@ -1,13 +1,14 @@
 import { NavRoutes } from '@/router/routes';
 import { linkInfo } from '@/types/componens';
+import { TFunction } from 'i18next';
 
-export const LINKS: linkInfo[] = [
+export const LINKS = (t: TFunction): linkInfo[] => [
   {
-    text: 'Home',
+    text: t('links.landing'),
     link: NavRoutes.landingPagePath,
   },
   {
-    text: 'Collections',
+    text: t('links.collections'),
     link: NavRoutes.collectionsPagePath,
   },
 ];
