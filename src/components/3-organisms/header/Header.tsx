@@ -1,14 +1,8 @@
-import { ColorModeSwitcher } from '@molecules/ColorModeSwitcher';
 import Logo from '@atoms/Logo';
-import {
-  Flex,
-  HStack,
-  useColorModeValue,
-  useMediaQuery,
-} from '@chakra-ui/react';
-import LanguageSwitcher from '@molecules/languageSwitcher/LanguageSwitcher';
+import { Flex, useColorModeValue, useMediaQuery } from '@chakra-ui/react';
 import MobileMenu from './components/MobileMenu';
 import DesktopMenu from './components/DesktopMenu';
+import SettingsBar from './components/SettingsBar';
 
 const Header = () => {
   const bg = useColorModeValue('gray.300', 'gray.700');
@@ -27,10 +21,7 @@ const Header = () => {
       zIndex="100"
     >
       <Logo w="112px" />
-      <HStack>
-        <ColorModeSwitcher />
-        <LanguageSwitcher />
-      </HStack>
+      <SettingsBar />
       {isLargerThan768 && <DesktopMenu />}
       {!isLargerThan768 && <MobileMenu />}
     </Flex>
