@@ -1,6 +1,7 @@
 {
   "links": {
     "landing": "Home",
-    "collections": "Collections"
+    "collections": "Collections",
+    "users": "Users"
   }
 }

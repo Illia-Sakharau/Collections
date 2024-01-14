@@ -1,6 +1,7 @@
 {
   "links": {
     "landing": "Домашняя",
-    "collections": "Коллекции"
+    "collections": "Коллекции",
+    "users": "Пользователи"
   }
 }

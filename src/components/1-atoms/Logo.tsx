@@ -7,9 +7,9 @@ import { FC } from 'react';
 type Props = {
   w?: string;
   h?: string;
-}
+};
 
-const Logo: FC<Props> = ({ w='inherit', h='inherit' }) => {
+const Logo: FC<Props> = ({ w = 'inherit', h = 'inherit' }) => {
   const theme = useTheme();
   const fill = useColorModeValue(
     theme.__cssVars['--chakra-colors-brand-600'],
@@ -22,7 +22,7 @@ const Logo: FC<Props> = ({ w='inherit', h='inherit' }) => {
         style={{
           fill,
           width: w,
-          height: h
+          height: h,
         }}
       />
     </NavLink>
