@@ -1,16 +1,20 @@
-import { useAppDispatch } from '@/hooks/redux';
-import { userSlice } from '@/store/reducers/UserSlice';
+import useAuth from '@/hooks/useAuth';
+import { NavRoutes } from '@/router/routes';
+import { Navigate } from 'react-router-dom';
 
 export default () => {
-  const { setUser } = userSlice.actions;
-  const dispatch = useAppDispatch();
+  const { isAuth, loginAction } = useAuth();
+
+  if (isAuth) {
+    return <Navigate to={NavRoutes.landingPagePath} />;
+  }
 
   return (
     <div>
       LOGIN PAGE
       <button
         onClick={() => {
-          dispatch(setUser({ name: 'test1', isAdmin: true }));
+          loginAction();
         }}
       >
         Login

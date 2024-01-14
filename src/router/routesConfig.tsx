@@ -11,6 +11,8 @@ import CollectionPage from '@pages/CollectionPage';
 import NotFoundPage from '@pages/NotFoundPage';
 import SearchPage from '@pages/SearchPage';
 import UsersPage from '@/pages/UsersPage';
+import RequireAuth from '@/hocs/RequireAuth';
+import RequireAdmin from '@/hocs/RequireAdmin';
 
 export const routes = [
   {
@@ -42,7 +44,11 @@ export const routes = [
       },
       {
         path: NavRoutes.collectionsPagePath,
-        element: <CollectionsPage />,
+        element: (
+          <RequireAuth>
+            <CollectionsPage />
+          </RequireAuth>
+        ),
       },
       {
         path: '/collection/:id',
@@ -50,7 +56,11 @@ export const routes = [
       },
       {
         path: NavRoutes.usersPagePath,
-        element: <UsersPage />,
+        element: (
+          <RequireAdmin>
+            <UsersPage />
+          </RequireAdmin>
+        ),
       },
       {
         path: '*',
