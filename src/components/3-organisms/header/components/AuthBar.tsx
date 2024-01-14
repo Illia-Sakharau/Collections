@@ -8,16 +8,13 @@ type Props = FlexProps;
 
 const AuthBar = (props: Props) => {
   const { t } = useTranslation();
-  const { isAuth } = useAuth();
+  const { isAuth, logoutAction } = useAuth();
   const navigate = useNavigate();
-  const logoutHandle = () => {
-    console.log('Logout action');
-  };
 
   return (
     <Flex gap="2" {...props}>
       {isAuth ? (
-        <Button variant="outline" colorScheme="negative" onClick={logoutHandle}>
+        <Button variant="outline" colorScheme="negative" onClick={logoutAction}>
           {t('authbar.logout')}
         </Button>
       ) : (
