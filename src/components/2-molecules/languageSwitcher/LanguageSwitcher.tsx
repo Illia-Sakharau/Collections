@@ -8,11 +8,8 @@ type Props = FlexProps;
 const LanguageSwitcher: FC<Props> = (props) => {
   return (
     <Flex border="solid 1px" borderRadius="md" alignItems="center" {...props}>
-      {LANGUAGES.map((lang, i) => (
-        <>
-          {i !== 0 && <>•</>}
-          <LangButton {...lang} />
-        </>
+      {LANGUAGES.map((lang) => (
+        <LangButton {...lang} />
       ))}
     </Flex>
   );
