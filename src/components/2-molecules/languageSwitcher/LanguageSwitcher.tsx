@@ -9,7 +9,7 @@ const LanguageSwitcher: FC<Props> = (props) => {
   return (
     <Flex border="solid 1px" borderRadius="md" alignItems="center" {...props}>
       {LANGUAGES.map((lang) => (
-        <LangButton {...lang} />
+        <LangButton key={lang.value} {...lang} />
       ))}
     </Flex>
   );

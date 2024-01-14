@@ -1,17 +1,21 @@
 import { ColorModeSwitcher } from '@molecules/ColorModeSwitcher';
 import Logo from '@atoms/Logo';
-import { Flex, Spacer, useColorModeValue } from '@chakra-ui/react';
-import NavBar from '@/components/2-molecules/navBar/NavBar';
+import { Flex, HStack, useColorModeValue, useMediaQuery } from '@chakra-ui/react';
+import NavBar from '@molecules/navBar/NavBar';
 import { LINKS } from './constants';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '@/components/2-molecules/languageSwitcher/LanguageSwitcher';
+import LanguageSwitcher from '@molecules/languageSwitcher/LanguageSwitcher';
+import MobileMenu from './components/MobileMenu';
 
 const Header = () => {
   const bg = useColorModeValue('gray.300', 'gray.700');
   const { t } = useTranslation();
+  const [isLargerThan768] = useMediaQuery('(min-width: 768px)')
 
   return (
     <Flex
+      gap={{base: 1, md: 4}}
+      justifyContent='space-between'
       position="sticky"
       top="0"
       h="80px"
@@ -20,12 +24,13 @@ const Header = () => {
       bg={bg}
       zIndex="100"
     >
-      <Logo />
-      <Spacer />
-      <ColorModeSwitcher justifySelf="flex-end" mr="4" />
-      <LanguageSwitcher />
-      <Spacer />
-      <NavBar links={LINKS(t)} />
+      <Logo w='112px'/>
+      <HStack>
+        <ColorModeSwitcher />
+        <LanguageSwitcher />
+      </HStack>
+      {isLargerThan768 && <NavBar links={LINKS(t)} />}
+      {!isLargerThan768 && <MobileMenu />}
     </Flex>
   );
 };
