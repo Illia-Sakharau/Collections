@@ -1,20 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import useAuth from '@/hooks/useAuth';
 import { Button, Flex, FlexProps } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import { NavRoutes } from '@/router/routes';
 
 type Props = FlexProps;
 
 const AuthBar = (props: Props) => {
   const { t } = useTranslation();
   const { isAuth } = useAuth();
+  const navigate = useNavigate();
   const logoutHandle = () => {
     console.log('Logout action');
-  };
-  const loginHandle = () => {
-    console.log('Login action');
-  };
-  const registrationHandle = () => {
-    console.log('Registration action');
   };
 
   return (
@@ -25,13 +22,17 @@ const AuthBar = (props: Props) => {
         </Button>
       ) : (
         <>
-          <Button variant="ghost" colorScheme="brand" onClick={loginHandle}>
+          <Button
+            variant="ghost"
+            colorScheme="brand"
+            onClick={() => navigate(NavRoutes.loginPagePath)}
+          >
             {t('authbar.login')}
           </Button>
           <Button
             variant="outline"
             colorScheme="brand"
-            onClick={registrationHandle}
+            onClick={() => navigate(NavRoutes.registrationPagePath)}
           >
             {t('authbar.registration')}
           </Button>

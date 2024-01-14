@@ -1,5 +1,5 @@
 export default () => {
-  const isAuth = true;
+  const isAuth = false;
   const isAdmin = true;
 
   return {
