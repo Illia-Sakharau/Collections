@@ -39,7 +39,7 @@ const MobileMenu = () => {
         <Spacer />
         <AuthBar
           direction="column-reverse"
-          mb="16"
+          mb="32"
           onClick={() => setIsOpen(false)}
         />
       </Flex>
