@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import LanguageSwitcher from '@molecules/languageSwitcher/LanguageSwitcher';
 import MobileMenu from './components/MobileMenu';
-import NavigationBar from './components/NavigationBar';
+import DesktopMenu from './components/DesktopMenu';
 
 const Header = () => {
   const bg = useColorModeValue('gray.300', 'gray.700');
@@ -31,7 +31,7 @@ const Header = () => {
         <ColorModeSwitcher />
         <LanguageSwitcher />
       </HStack>
-      {isLargerThan768 && <NavigationBar />}
+      {isLargerThan768 && <DesktopMenu />}
       {!isLargerThan768 && <MobileMenu />}
     </Flex>
   );

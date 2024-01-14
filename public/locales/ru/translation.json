@@ -1,7 +1,12 @@
 {
   "links": {
-    "landing": "Домашняя",
+    "landing": "Главная",
     "collections": "Коллекции",
     "users": "Пользователи"
+  },
+  "authbar": {
+    "logout": "Выйти",
+    "login": "Войти",
+    "registration": "Зарегистрироваться"
   }
 }

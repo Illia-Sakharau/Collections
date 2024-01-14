@@ -2,6 +2,7 @@ import { Flex, IconButton, Spacer, useColorModeValue } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import NavigationBar from './NavigationBar';
+import AuthBar from './AuthBar';
 
 const MobileMenu = () => {
   const bg = useColorModeValue('gray.400', 'gray.900');
@@ -36,7 +37,11 @@ const MobileMenu = () => {
           onClick={() => setIsOpen(false)}
         />
         <Spacer />
-        <div>Batton Bar</div>
+        <AuthBar
+          direction="column-reverse"
+          mb="16"
+          onClick={() => setIsOpen(false)}
+        />
       </Flex>
     </>
   );

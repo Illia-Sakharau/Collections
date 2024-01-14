@@ -3,5 +3,10 @@
     "landing": "Home",
     "collections": "Collections",
     "users": "Users"
+  },
+  "authbar": {
+    "logout": "Logout",
+    "login": "Login",
+    "registration": "Registration"
   }
 }
