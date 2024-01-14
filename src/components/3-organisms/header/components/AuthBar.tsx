@@ -4,9 +4,11 @@ import { Button, Flex, FlexProps } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { NavRoutes } from '@/router/routes';
 
-type Props = FlexProps;
+type Props = {
+  buttonSize?: string;
+} & FlexProps;
 
-const AuthBar = (props: Props) => {
+const AuthBar = ({ buttonSize = 'md', ...props }: Props) => {
   const { t } = useTranslation();
   const { isAuth, logoutAction } = useAuth();
   const navigate = useNavigate();
@@ -14,7 +16,12 @@ const AuthBar = (props: Props) => {
   return (
     <Flex gap="2" {...props}>
       {isAuth ? (
-        <Button variant="outline" colorScheme="negative" onClick={logoutAction}>
+        <Button
+          variant="outline"
+          colorScheme="negative"
+          size={buttonSize}
+          onClick={logoutAction}
+        >
           {t('authbar.logout')}
         </Button>
       ) : (
@@ -22,6 +29,7 @@ const AuthBar = (props: Props) => {
           <Button
             variant="ghost"
             colorScheme="brand"
+            size={buttonSize}
             onClick={() => navigate(NavRoutes.loginPagePath)}
           >
             {t('authbar.login')}
@@ -29,6 +37,7 @@ const AuthBar = (props: Props) => {
           <Button
             variant="outline"
             colorScheme="brand"
+            size={buttonSize}
             onClick={() => navigate(NavRoutes.registrationPagePath)}
           >
             {t('authbar.registration')}

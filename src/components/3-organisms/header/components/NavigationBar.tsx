@@ -9,7 +9,11 @@ type Props = FlexProps;
 const NavigationBar = (props: Props) => {
   const { t } = useTranslation();
   const { isAuth, isAdmin } = useAuth();
-  const links = !isAuth ? ANON_LINKS : isAdmin ? ADMIN_LINKS(t) : AUTH_LINKS(t);
+  const links = !isAuth
+    ? ANON_LINKS(t)
+    : isAdmin
+      ? ADMIN_LINKS(t)
+      : AUTH_LINKS(t);
 
   return <NavBar links={links} {...props} />;
 };

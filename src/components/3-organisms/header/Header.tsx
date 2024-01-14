@@ -1,29 +1,20 @@
-import Logo from '@atoms/Logo';
-import { Flex, useColorModeValue, useMediaQuery } from '@chakra-ui/react';
-import MobileMenu from './components/MobileMenu';
-import DesktopMenu from './components/DesktopMenu';
-import SettingsBar from './components/SettingsBar';
+import { Flex, useMediaQuery } from '@chakra-ui/react';
+import TopPart from './components/TopPart';
+import BottomPart from './components/BottomPart';
 
 const Header = () => {
-  const bg = useColorModeValue('gray.300', 'gray.700');
   const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
 
   return (
     <Flex
-      gap={{ base: 1, md: 4 }}
-      justifyContent="space-between"
+      direction="column"
       position="sticky"
       top="0"
-      h="80px"
-      alignItems="center"
-      px={{ base: '4', md: '8' }}
-      bg={bg}
       zIndex="100"
+      boxShadow="md"
     >
-      <Logo w="112px" />
-      <SettingsBar />
-      {isLargerThan768 && <DesktopMenu />}
-      {!isLargerThan768 && <MobileMenu />}
+      {isLargerThan768 && <TopPart />}
+      <BottomPart isLargerThan={isLargerThan768} />
     </Flex>
   );
 };

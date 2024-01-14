@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import NavigationBar from './NavigationBar';
 import AuthBar from './AuthBar';
+import SettingsBar from './SettingsBar';
 
 const MobileMenu = () => {
   const bg = useColorModeValue('gray.400', 'gray.900');
@@ -29,7 +30,9 @@ const MobileMenu = () => {
         h="calc(100vh - 80px)"
         bg={bg}
         zIndex="100"
+        p="4"
       >
+        <SettingsBar w="100%" justifyContent="space-between" mt="4" />
         <Spacer />
         <NavigationBar
           direction="column"
@@ -39,7 +42,7 @@ const MobileMenu = () => {
         <Spacer />
         <AuthBar
           direction="column-reverse"
-          mb="32"
+          mb="28"
           onClick={() => setIsOpen(false)}
         />
       </Flex>
