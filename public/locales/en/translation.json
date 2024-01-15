@@ -11,6 +11,25 @@
     "login": "Login",
     "registration": "Registration"
   },
+  "login": {
+    "email_label": "Your Email",
+    "email_placeholder": "Type your email",
+    "password_label": "Password",
+    "password_placeholder": "Type your password",
+    "password_helper": "Password should contain at least 8 characters",
+    "submit_button": "Login"
+  },
+  "registration": {
+    "username_label": "Your fullname",
+    "username_placeholder": "Type your fullname",
+    "email_label": "Your Email",
+    "email_placeholder": "Type your email",
+    "password_label": "Password",
+    "password_placeholder": "Type a new password",
+    "password_helper": "Password should contain at least 8 characters",
+    "tc": "I have read and agree to the <1>terms & conditions</1>.",
+    "submit_button": "Registration"
+  },
   "other": {
     "passwordBtn": "Show/Hidden password button"
   }

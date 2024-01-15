@@ -11,6 +11,25 @@
     "login": "Войти",
     "registration": "Зарегистрироваться"
   },
+  "login": {
+    "email_label": "Электронная почта",
+    "email_placeholder": "Введите Вашу электронную почту",
+    "password_label": "Пароль",
+    "password_placeholder": "Введите Ваш пароль",
+    "password_helper": "Пароль должен содержать минимум 8 символов",
+    "submit_button": "Войти"
+  },
+  "registration": {
+    "username_label": "Ваше имя и фамилия",
+    "username_placeholder": "Введите Ваши имя и фамилию",
+    "email_label": "Электронная почта",
+    "email_placeholder": "Введите Вашу электронную почту",
+    "password_label": "Пароль",
+    "password_placeholder": "Введите новый пароль",
+    "password_helper": "Пароль должен содержать минимум 8 символов",
+    "tc": "Я прочитал <1>правила и условия</1> и согласен с ними.",
+    "submit_button": "Зарегистрироваться"
+  },
   "other": {
     "passwordBtn": "Кнопка показать/скрыть пароль"
   }

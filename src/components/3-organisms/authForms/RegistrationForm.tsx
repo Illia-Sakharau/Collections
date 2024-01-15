@@ -3,8 +3,10 @@ import { Checkbox, Link } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { NavLink } from 'react-router-dom';
 import FormWrapper from './components/FormWrapper';
+import { Trans, useTranslation } from 'react-i18next';
 
 const RegistrationForm = () => {
+  const { t } = useTranslation();
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -17,31 +19,35 @@ const RegistrationForm = () => {
     },
   });
   return (
-    <FormWrapper onSubmit={formik.handleSubmit} buttonText={'Registration'}>
+    <FormWrapper
+      onSubmit={formik.handleSubmit}
+      buttonText={t('registration.submit_button')}
+    >
       <FormInput
         isRequired
-        label={'Full name'}
+        label={t('registration.username_label')}
         htmlFor="username"
         type={'text'}
-        placeholder="Type your full name"
+        placeholder={t('registration.username_placeholder')}
         onChange={formik.handleChange}
         value={formik.values.username}
       />
       <FormInput
         isRequired
-        label={'Email'}
+        label={t('registration.email_label')}
         htmlFor="email"
         type={'email'}
-        placeholder="Type your email"
+        placeholder={t('registration.email_placeholder')}
         onChange={formik.handleChange}
         value={formik.values.email}
       />
       <FormInput
         isRequired
-        label={'Password'}
+        label={t('registration.password_label')}
         htmlFor="password"
         type={'password'}
-        placeholder="Type a new password"
+        placeholder={t('registration.password_placeholder')}
+        helperText={t('registration.password_helper')}
         onChange={formik.handleChange}
         value={formik.values.password}
       />
@@ -54,11 +60,13 @@ const RegistrationForm = () => {
         isChecked={formik.values.tc}
         mt={4}
       >
-        I have read and agree to the{' '}
-        <Link to="#some-link" as={NavLink} color="brand.500">
-          terms & conditions
-        </Link>
-        .
+        <Trans i18nKey="registration.tc">
+          I have read and agree to the
+          <Link to="#some-link" as={NavLink} color="brand.500">
+            terms & conditions
+          </Link>
+          .
+        </Trans>
       </Checkbox>
     </FormWrapper>
   );
