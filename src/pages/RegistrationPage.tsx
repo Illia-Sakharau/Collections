@@ -1,3 +1,4 @@
+import RegistrationForm from '@organisms/registrationForm/RegistrationForm';
 import useAuth from '@/hooks/useAuth';
 import { NavRoutes } from '@/router/routes';
 import { Navigate } from 'react-router-dom';
@@ -9,5 +10,5 @@ export default () => {
     return <Navigate to={NavRoutes.landingPagePath} />;
   }
 
-  return <div>REGISTRATION PAGE</div>;
+  return <RegistrationForm />;
 };

@@ -13,6 +13,7 @@ import PasswordButton from './components/PasswordButton';
 
 type Props = {
   label: string;
+  htmlFor: string;
   isRequired?: boolean;
   type: 'text' | 'email' | 'password';
   errorText?: string;
@@ -22,6 +23,7 @@ type Props = {
 
 const FormInput: FC<Props> = ({
   label,
+  htmlFor,
   type,
   isRequired = false,
   errorText,
@@ -30,7 +32,6 @@ const FormInput: FC<Props> = ({
   ...inputProps
 }) => {
   const [isShow, setIsShow] = useState(false);
-  const name = label.trim().toLocaleLowerCase().replaceAll(' ', '-');
 
   return (
     <FormControl
@@ -38,11 +39,11 @@ const FormInput: FC<Props> = ({
       isInvalid={!!errorText}
       {...formControlProps}
     >
-      <FormLabel htmlFor={name}>{label}</FormLabel>
+      <FormLabel htmlFor={htmlFor}>{label}</FormLabel>
       <InputGroup>
         <Input
-          id={name}
-          name={name}
+          id={htmlFor}
+          name={htmlFor}
           type={isShow ? 'text' : type}
           pr={type === 'password' ? '10' : '4'}
           focusBorderColor="brand.500"
