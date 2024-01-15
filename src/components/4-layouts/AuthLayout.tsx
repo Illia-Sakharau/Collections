@@ -1,11 +1,12 @@
 import { Outlet } from 'react-router-dom';
+import SectionWrapper from '../1-atoms/SectionWrapper';
 
 const AuthLayout = () => {
   return (
-    <div>
+    <SectionWrapper>
       <div>IMAGE</div>
       <Outlet />
-    </div>
+    </SectionWrapper>
   );
 };
 
