@@ -1,4 +1,4 @@
-import RegistrationForm from '@organisms/registrationForm/RegistrationForm';
+import RegistrationForm from '@organisms/authForms/RegistrationForm';
 import useAuth from '@/hooks/useAuth';
 import { NavRoutes } from '@/router/routes';
 import { Navigate } from 'react-router-dom';
