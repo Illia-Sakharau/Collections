@@ -9,7 +9,7 @@ type Props = {
 
 const NavBar: FC<Props> = ({ links, ...props }) => {
   return (
-    <Flex gap={3} {...props}>
+    <Flex as="nav" gap={3} {...props}>
       {links.map((linkInfo) => (
         <NavLink {...linkInfo} key={linkInfo.text} />
       ))}

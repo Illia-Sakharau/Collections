@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { NavRoutes } from './routes';
 import RootLayout from '@layouts/RootLayout';
-import AuthLayout from '@layouts/AuthLayout';
+import AuthLayout from '@/components/4-layouts/authLayout/AuthLayout';
 import ErrorPage from '@pages/ErrorPage';
 import LandingPage from '@pages/LandingPage';
 import LoginPage from '@pages/LoginPage';

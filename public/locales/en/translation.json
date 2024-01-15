@@ -1,5 +1,7 @@
 {
   "links": {
+    "login": "Login",
+    "registration": "Registration",
     "landing": "Home",
     "collections": "Collections",
     "users": "Users"

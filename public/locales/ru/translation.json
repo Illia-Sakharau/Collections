@@ -1,5 +1,7 @@
 {
   "links": {
+    "login": "Вход",
+    "registration": "Регистрация",
     "landing": "Главная",
     "collections": "Коллекции",
     "users": "Пользователи"
