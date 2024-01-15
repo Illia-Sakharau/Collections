@@ -10,5 +10,8 @@
     "logout": "Logout",
     "login": "Login",
     "registration": "Registration"
+  },
+  "other": {
+    "passwordBtn": "Show/Hidden password button"
   }
 }
