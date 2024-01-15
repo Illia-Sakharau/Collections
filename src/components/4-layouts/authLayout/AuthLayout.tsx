@@ -1,11 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import SectionWrapper from '../../1-atoms/SectionWrapper';
-import {
-  Flex,
-  Image,
-  useColorModeValue,
-  useMediaQuery,
-} from '@chakra-ui/react';
+import { Box, Flex, useColorModeValue, useMediaQuery } from '@chakra-ui/react';
 import IMG from '@/assets/auth-img.jpg';
 import NavBar from '@molecules/navBar/NavBar';
 import { LINKS } from './constants';
@@ -29,21 +24,18 @@ const AuthLayout = () => {
     >
       <Flex
         flexGrow="1"
-        alignItems="center"
+        alignItems="stretch"
         borderRadius={{ base: 4, md: 8, lg: 16 }}
         overflow="hidden"
         bg={bg}
         boxShadow="lg"
+        minH="50vh"
       >
-        <Image
-          alignItems="center"
-          src={IMG}
-          objectFit="cover"
+        <Box
           w="50%"
-          minH="0"
-          h="20"
-          overflow="visible"
+          alignSelf="stretch"
           hidden={isLargerThan768}
+          bg={`url('${IMG}') 50%/cover no-repeat`}
         />
         <Flex direction="column" w={{ base: '100%', md: '50%' }}>
           <NavBar
