@@ -19,7 +19,7 @@ const FormWrapper = ({ onSubmit, children, buttonText }: Props) => {
         noValidate
         style={{ display: 'flex', minHeight: '100%' }}
       >
-        <Flex direction="column" flexGrow="1">
+        <Flex direction="column" flexGrow="1" gap={2}>
           <Spacer />
           {children}
           <Spacer />

@@ -1,9 +1,11 @@
 import FormInput from '@/components/2-molecules/formInput/FormInput';
-import { Checkbox, Link } from '@chakra-ui/react';
+import { Link } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { NavLink } from 'react-router-dom';
 import FormWrapper from './components/FormWrapper';
 import { Trans, useTranslation } from 'react-i18next';
+import { RegistrationSchema } from './validationShemas';
+import FormCheckbox from '@molecules/FormCheckbox';
 
 const RegistrationForm = () => {
   const { t } = useTranslation();
@@ -14,6 +16,9 @@ const RegistrationForm = () => {
       password: '',
       tc: false,
     },
+    validationSchema: RegistrationSchema(t),
+    validateOnChange: true,
+    validateOnBlur: true,
     onSubmit: (values) => {
       alert(JSON.stringify(values));
     },
@@ -29,8 +34,10 @@ const RegistrationForm = () => {
         htmlFor="username"
         type={'text'}
         placeholder={t('registration.username_placeholder')}
+        onBlur={formik.handleBlur}
         onChange={formik.handleChange}
         value={formik.values.username}
+        errorText={formik.touched.username ? formik.errors.username : undefined}
       />
       <FormInput
         isRequired
@@ -38,8 +45,10 @@ const RegistrationForm = () => {
         htmlFor="email"
         type={'email'}
         placeholder={t('registration.email_placeholder')}
+        onBlur={formik.handleBlur}
         onChange={formik.handleChange}
         value={formik.values.email}
+        errorText={formik.touched.email ? formik.errors.email : undefined}
       />
       <FormInput
         isRequired
@@ -48,17 +57,20 @@ const RegistrationForm = () => {
         type={'password'}
         placeholder={t('registration.password_placeholder')}
         helperText={t('registration.password_helper')}
+        onBlur={formik.handleBlur}
         onChange={formik.handleChange}
         value={formik.values.password}
+        errorText={formik.touched.password ? formik.errors.password : undefined}
       />
-      <Checkbox
+
+      <FormCheckbox
         id="tc"
         name="tc"
-        colorScheme="brand"
-        alignSelf="stretch"
+        onBlur={formik.handleBlur}
         onChange={formik.handleChange}
         isChecked={formik.values.tc}
         mt={4}
+        errorText={formik.touched.tc ? formik.errors.tc : undefined}
       >
         <Trans i18nKey="registration.tc">
           I have read and agree to the
@@ -67,7 +79,7 @@ const RegistrationForm = () => {
           </Link>
           .
         </Trans>
-      </Checkbox>
+      </FormCheckbox>
     </FormWrapper>
   );
 };
