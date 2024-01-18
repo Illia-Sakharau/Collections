@@ -5,9 +5,10 @@ type Props = {
   onSubmit: (e?: FormEvent<HTMLFormElement> | undefined) => void;
   children: ReactNode;
   buttonText: string;
+  isLoading: boolean;
 };
 
-const FormWrapper = ({ onSubmit, children, buttonText }: Props) => {
+const FormWrapper = ({ onSubmit, children, buttonText, isLoading }: Props) => {
   return (
     <Box
       flexGrow="1"
@@ -24,7 +25,13 @@ const FormWrapper = ({ onSubmit, children, buttonText }: Props) => {
           {children}
           <Spacer />
           <Spacer />
-          <Button colorScheme="brand" mt={8} alignSelf="stretch" type="submit">
+          <Button
+            colorScheme="brand"
+            mt={8}
+            alignSelf="stretch"
+            type="submit"
+            isLoading={isLoading}
+          >
             {buttonText}
           </Button>
         </Flex>

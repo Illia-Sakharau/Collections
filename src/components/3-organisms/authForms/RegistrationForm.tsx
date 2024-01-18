@@ -10,7 +10,7 @@ import useAuth from '@/hooks/useAuth';
 
 const RegistrationForm = () => {
   const { t } = useTranslation();
-  const { registrationAction } = useAuth();
+  const { registrationAction, registrationProps } = useAuth();
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -30,6 +30,7 @@ const RegistrationForm = () => {
     <FormWrapper
       onSubmit={formik.handleSubmit}
       buttonText={t('registration.submit_button')}
+      isLoading={registrationProps.isLoading}
     >
       <FormInput
         isRequired

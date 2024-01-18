@@ -7,7 +7,7 @@ import { LoginSchema } from './validationShemas';
 
 const LoginForm = () => {
   const { t } = useTranslation();
-  const { loginAction } = useAuth();
+  const { loginAction, loginProps } = useAuth();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -24,6 +24,7 @@ const LoginForm = () => {
     <FormWrapper
       onSubmit={formik.handleSubmit}
       buttonText={t('login.submit_button')}
+      isLoading={loginProps.isLoading}
     >
       <FormInput
         isRequired
