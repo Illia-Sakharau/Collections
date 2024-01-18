@@ -4,6 +4,7 @@ import { FaBars } from 'react-icons/fa';
 import NavigationBar from './NavigationBar';
 import AuthBar from './AuthBar';
 import SettingsBar from './SettingsBar';
+import UserName from './UserName';
 
 const MobileMenu = () => {
   const bg = useColorModeValue('gray.400', 'gray.900');
@@ -32,6 +33,7 @@ const MobileMenu = () => {
         zIndex="100"
         p="4"
       >
+        <UserName />
         <SettingsBar w="100%" justifyContent="space-between" mt="4" />
         <Spacer />
         <NavigationBar
