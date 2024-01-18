@@ -7,6 +7,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { RegistrationSchema } from './validationShemas';
 import FormCheckbox from '@molecules/FormCheckbox';
 import useAuth from '@/hooks/useAuth';
+import { IResponseError } from '@/types/api';
 
 const RegistrationForm = () => {
   const { t } = useTranslation();
@@ -31,6 +32,11 @@ const RegistrationForm = () => {
       onSubmit={formik.handleSubmit}
       buttonText={t('registration.submit_button')}
       isLoading={registrationProps.isLoading}
+      error={
+        registrationProps.isError
+          ? (registrationProps.error as IResponseError).data.message
+          : undefined
+      }
     >
       <FormInput
         isRequired

@@ -1,4 +1,11 @@
-import { Box, Button, Flex, Spacer } from '@chakra-ui/react';
+import {
+  Alert,
+  AlertDescription,
+  Box,
+  Button,
+  Flex,
+  Spacer,
+} from '@chakra-ui/react';
 import { FormEvent, ReactNode } from 'react';
 
 type Props = {
@@ -6,9 +13,16 @@ type Props = {
   children: ReactNode;
   buttonText: string;
   isLoading: boolean;
+  error?: string;
 };
 
-const FormWrapper = ({ onSubmit, children, buttonText, isLoading }: Props) => {
+const FormWrapper = ({
+  onSubmit,
+  children,
+  buttonText,
+  isLoading,
+  error,
+}: Props) => {
   return (
     <Box
       flexGrow="1"
@@ -25,6 +39,12 @@ const FormWrapper = ({ onSubmit, children, buttonText, isLoading }: Props) => {
           {children}
           <Spacer />
           <Spacer />
+
+          {!!error && (
+            <Alert status="error">
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          )}
           <Button
             colorScheme="brand"
             mt={8}

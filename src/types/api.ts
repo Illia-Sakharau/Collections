@@ -16,3 +16,10 @@ export interface IUserInfo {
   is_admin: boolean | null;
   token: string | null;
 }
+
+export interface IResponseError {
+  status: number;
+  data: {
+    message: string;
+  };
+}

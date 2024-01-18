@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import FormWrapper from './components/FormWrapper';
 import { useTranslation } from 'react-i18next';
 import { LoginSchema } from './validationShemas';
+import { IResponseError } from '@/types/api';
 
 const LoginForm = () => {
   const { t } = useTranslation();
@@ -25,6 +26,11 @@ const LoginForm = () => {
       onSubmit={formik.handleSubmit}
       buttonText={t('login.submit_button')}
       isLoading={loginProps.isLoading}
+      error={
+        loginProps.isError
+          ? (loginProps.error as IResponseError).data.message
+          : undefined
+      }
     >
       <FormInput
         isRequired
