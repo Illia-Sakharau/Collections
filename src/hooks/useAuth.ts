@@ -3,11 +3,12 @@ import { useAppDispatch, useAppSelector } from './redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { NavRoutes } from '@/router/routes';
 import { useLoginMutation, useRegistrationMutation } from '@/API/authAPI';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
+import { ILoginReques, IRegistrationReques } from '@/types/api';
 
 export default () => {
-  const [loginAction, loginProps] = useLoginMutation();
-  const [registrationAction, registrationProps] = useRegistrationMutation();
+  const [login, loginProps] = useLoginMutation();
+  const [registration, registrationProps] = useRegistrationMutation();
   const { removeUser } = userSlice.actions;
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.userReducer);
@@ -21,13 +22,23 @@ export default () => {
     localStorage.removeItem('user');
   };
 
-  useEffect(() => {
-    if (user.token) {
-      localStorage.setItem('user', JSON.stringify(user));
-      navigate(fromPage, { replace: true });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  const loginAction = (props: ILoginReques) => {
+    login(props)
+      .unwrap()
+      .then((fulfilled) => {
+        localStorage.setItem('user', JSON.stringify(fulfilled));
+        navigate(fromPage, { replace: true });
+      });
+  };
+
+  const registrationAction = (props: IRegistrationReques) => {
+    registration(props)
+      .unwrap()
+      .then((fulfilled) => {
+        localStorage.setItem('user', JSON.stringify(fulfilled));
+        navigate(fromPage, { replace: true });
+      });
+  };
 
   return {
     isAuth: !!user.token,

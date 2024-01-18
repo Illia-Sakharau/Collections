@@ -6,9 +6,11 @@ import FormWrapper from './components/FormWrapper';
 import { Trans, useTranslation } from 'react-i18next';
 import { RegistrationSchema } from './validationShemas';
 import FormCheckbox from '@molecules/FormCheckbox';
+import useAuth from '@/hooks/useAuth';
 
 const RegistrationForm = () => {
   const { t } = useTranslation();
+  const { registrationAction } = useAuth();
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -20,7 +22,8 @@ const RegistrationForm = () => {
     validateOnChange: true,
     validateOnBlur: true,
     onSubmit: (values) => {
-      alert(JSON.stringify(values));
+      const { username, email, password } = values;
+      registrationAction({ name: username, email, password });
     },
   });
   return (
