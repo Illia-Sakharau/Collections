@@ -17,8 +17,7 @@ const LoginForm = () => {
     validateOnChange: true,
     validateOnBlur: true,
     onSubmit: (values) => {
-      alert(JSON.stringify(values));
-      loginAction();
+      loginAction(values);
     },
   });
   return (
