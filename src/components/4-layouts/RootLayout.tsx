@@ -9,7 +9,11 @@ const RootLayout = () => {
   return (
     <Flex direction="column" bg={bg}>
       <Header />
-      <VStack as='main' minH={{base:'calc(100vh - 80px)', md: 'calc(100vh - 120px)'}}>
+      <VStack
+        as="main"
+        alignItems="stretch"
+        minH={{ base: 'calc(100vh - 80px)', md: 'calc(100vh - 120px)' }}
+      >
         <Outlet />
       </VStack>
       <Footer />
