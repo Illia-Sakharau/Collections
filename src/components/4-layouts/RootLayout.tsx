@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Header from '@organisms/header/Header';
-import { Flex, useColorModeValue } from '@chakra-ui/react';
+import { Flex, VStack, useColorModeValue } from '@chakra-ui/react';
 import Footer from '../3-organisms/Footer';
 
 const RootLayout = () => {
@@ -9,9 +9,9 @@ const RootLayout = () => {
   return (
     <Flex direction="column" bg={bg}>
       <Header />
-      <main>
+      <VStack as='main' minH={{base:'calc(100vh - 80px)', md: 'calc(100vh - 120px)'}}>
         <Outlet />
-      </main>
+      </VStack>
       <Footer />
     </Flex>
   );
