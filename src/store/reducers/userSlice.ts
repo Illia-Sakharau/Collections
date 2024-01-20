@@ -1,9 +1,9 @@
 import authAPI from '@/API/authAPI';
-import { IUserInfo } from '@/types/api';
+import { IAuthUserInfo } from '@/types/api';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const localUser = localStorage.getItem('user');
-const nullUser: IUserInfo = {
+const nullUser: IAuthUserInfo = {
   id: null,
   name: null,
   email: null,
@@ -11,7 +11,7 @@ const nullUser: IUserInfo = {
   token: null,
 };
 
-const initialState: IUserInfo = localUser
+const initialState: IAuthUserInfo = localUser
   ? JSON.parse(localUser)
   : { ...nullUser };
 
@@ -19,7 +19,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser(_state, action: PayloadAction<IUserInfo>) {
+    setUser(_state, action: PayloadAction<IAuthUserInfo>) {
       return action.payload;
     },
     removeUser() {

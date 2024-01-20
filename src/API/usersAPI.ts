@@ -8,8 +8,6 @@ const usersAPI = createApi({
     baseUrl: 'https://collectionsbe-ivz1.onrender.com/users',
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).userReducer.token;
-      console.log(token);
-
       if (token) {
         headers.set('Authorization', `Bearer ${token}`);
       }

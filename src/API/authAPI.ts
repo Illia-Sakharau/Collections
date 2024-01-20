@@ -1,4 +1,4 @@
-import { ILoginReques, IRegistrationReques, IUserInfo } from '@/types/api';
+import { ILoginReques, IRegistrationReques, IAuthUserInfo } from '@/types/api';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const authAPI = createApi({
@@ -7,7 +7,7 @@ const authAPI = createApi({
     baseUrl: 'https://collectionsbe-ivz1.onrender.com/auth',
   }),
   endpoints: (build) => ({
-    login: build.mutation<IUserInfo, ILoginReques>({
+    login: build.mutation<IAuthUserInfo, ILoginReques>({
       query: (body) => ({
         url: `/login`,
         method: 'POST',
@@ -15,7 +15,7 @@ const authAPI = createApi({
       }),
     }),
 
-    registration: build.mutation<IUserInfo, IRegistrationReques>({
+    registration: build.mutation<IAuthUserInfo, IRegistrationReques>({
       query: (body) => ({
         url: `/registration`,
         method: 'POST',

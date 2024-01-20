@@ -9,7 +9,7 @@ export interface IRegistrationReques {
   password: string;
 }
 
-export interface IUserInfo {
+export interface IAuthUserInfo {
   id: number | null;
   name: string | null;
   email: string | null;
@@ -22,4 +22,9 @@ export interface IResponseError {
   data: {
     message: string;
   };
+}
+
+export interface IUserInfo extends Omit<IAuthUserInfo, 'token'> {
+  createdAt: string;
+  updatedAt: string;
 }
