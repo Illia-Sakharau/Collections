@@ -9,7 +9,7 @@ import { ILoginReques, IRegistrationReques } from '@/types/api';
 export default () => {
   const [login, loginProps] = useLoginMutation();
   const [registration, registrationProps] = useRegistrationMutation();
-  const { removeUser } = userSlice.actions;
+  const { removeUser, setIsAdmin } = userSlice.actions;
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.userReducer);
   const navigate = useNavigate();
@@ -20,6 +20,11 @@ export default () => {
   const logoutAction = () => {
     dispatch(removeUser());
     localStorage.removeItem('user');
+  };
+
+  const deadminAction = () => {
+    dispatch(setIsAdmin(false));
+    localStorage.setItem('user', JSON.stringify(user));
   };
 
   const loginAction = (props: ILoginReques) => {
@@ -49,5 +54,6 @@ export default () => {
     logoutAction,
     loginAction,
     registrationAction,
+    deadminAction,
   };
 };

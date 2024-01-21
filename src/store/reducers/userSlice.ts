@@ -22,6 +22,9 @@ export const userSlice = createSlice({
     setUser(_state, action: PayloadAction<IAuthUserInfo>) {
       return action.payload;
     },
+    setIsAdmin(state, action: PayloadAction<boolean>) {
+      state.is_admin = action.payload;
+    },
     removeUser() {
       return { ...nullUser };
     },

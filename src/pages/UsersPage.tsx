@@ -6,6 +6,10 @@ import UsersTable from '@organisms/usersTable/UsersTable';
 export default () => {
   const { isLoading, data, error } = useGetAllUsersQuery();
 
+  if (error) {
+    throw error;
+  }
+
   return (
     <>
       <PageHeading pageTitle={'Users'} />
