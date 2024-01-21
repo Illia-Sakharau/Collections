@@ -56,6 +56,14 @@
       }
     }
   },
+  "users": {
+    "id": "ID",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "createdAt": "Created at",
+    "updatedAt": "Updated at"
+  },
   "other": {
     "passwordBtn": "Show/Hidden password button"
   }
