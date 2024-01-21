@@ -1,16 +1,24 @@
 import SectionWrapper from '@atoms/SectionWrapper';
 import { IUserInfo } from '@/types/api';
-import { createColumnHelper } from '@tanstack/react-table';
+import {
+  SortingState,
+  createColumnHelper,
+  getCoreRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from '@tanstack/react-table';
 import { DataTable } from '../dataTable/DataTable';
 import { Tag } from '@chakra-ui/react';
 import DateTimeCell from '@molecules/tableCells/DateTimeCell';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 type Props = {
   data: IUserInfo[];
 };
 
 const UsersTable = ({ data }: Props) => {
+  const [sorting, setSorting] = useState<SortingState>([]);
   const { t } = useTranslation();
   const columnHelper = createColumnHelper<IUserInfo>();
 
@@ -29,7 +37,8 @@ const UsersTable = ({ data }: Props) => {
       header: t('users.email'),
     }),
     columnHelper.accessor('is_admin', {
-      cell: (info) => (info.getValue() ? <Tag>Admin</Tag> : '---'),
+      cell: (info) =>
+        info.getValue() ? <Tag border={'solid 1px'}>Admin</Tag> : '---',
       header: t('users.role'),
     }),
     columnHelper.accessor('createdAt', {
@@ -37,16 +46,28 @@ const UsersTable = ({ data }: Props) => {
       header: t('users.createdAt'),
       meta: {
         right: true,
-      }
+      },
     }),
     columnHelper.accessor('updatedAt', {
       cell: (info) => <DateTimeCell stringDate={info.getValue()} />,
       header: t('users.updatedAt'),
       meta: {
         right: true,
-      }
+      },
     }),
   ];
+
+  const table = useReactTable({
+    columns,
+    data,
+    getCoreRowModel: getCoreRowModel(),
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
+    getRowId: (row) => `${row.id}`,
+    state: {
+      sorting,
+    },
+  });
 
   return (
     <SectionWrapper
@@ -54,7 +75,14 @@ const UsersTable = ({ data }: Props) => {
         pt: { base: 0, md: 0, xl: 0 },
       }}
     >
-      <DataTable columns={columns} data={data} />
+      <button
+        onClick={() => {
+          console.log(Object.keys(table.getState().rowSelection));
+        }}
+      >
+        select
+      </button>
+      <DataTable columns={columns} isSelected table={table} />
     </SectionWrapper>
   );
 };

@@ -1,36 +1,41 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import * as React from 'react';
-import { Table, Thead, Tbody } from '@chakra-ui/react';
-import {
-  useReactTable,
-  getCoreRowModel,
-  ColumnDef,
-  SortingState,
-  getSortedRowModel,
-} from '@tanstack/react-table';
+import { Table, Thead, Tbody, Checkbox } from '@chakra-ui/react';
+import { ColumnDef, Table as TableG, Row } from '@tanstack/react-table';
 import BodyRaw from './components/BodyRaw';
 import HeaderRaw from './components/HeaderRaw';
 
 export type DataTableProps<Data extends object> = {
-  data: Data[];
   columns: ColumnDef<Data, any>[];
+  table: TableG<Data>;
+  isSelected?: boolean;
 };
 
 export function DataTable<Data extends object>({
-  data,
   columns,
+  table,
+  isSelected = false,
 }: DataTableProps<Data>) {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const table = useReactTable({
-    columns,
-    data,
-    getCoreRowModel: getCoreRowModel(),
-    onSortingChange: setSorting,
-    getSortedRowModel: getSortedRowModel(),
-    state: {
-      sorting,
-    },
-  });
+  if (isSelected) {
+    columns.unshift({
+      id: 'select-col',
+      header: ({ table }: { table: TableG<Data> }) => (
+        <Checkbox
+          colorScheme="brand"
+          isChecked={table.getIsAllRowsSelected()}
+          isIndeterminate={table.getIsSomeRowsSelected()}
+          onChange={table.getToggleAllRowsSelectedHandler()}
+        />
+      ),
+      cell: ({ row }: { row: Row<Data> }) => (
+        <Checkbox
+          colorScheme="brand"
+          isChecked={row.getIsSelected()}
+          disabled={!row.getCanSelect()}
+          onChange={row.getToggleSelectedHandler()}
+        />
+      ),
+    });
+  }
 
   return (
     <Table>
@@ -41,7 +46,18 @@ export function DataTable<Data extends object>({
       </Thead>
       <Tbody>
         {table.getRowModel().rows.map((row) => (
-          <BodyRaw key={row.id} {...row} />
+          <BodyRaw
+            key={row.id}
+            trProps={
+              isSelected
+                ? {
+                    onClick: row.getToggleSelectedHandler(),
+                    cursor: 'pointer',
+                  }
+                : undefined
+            }
+            {...row}
+          />
         ))}
       </Tbody>
     </Table>

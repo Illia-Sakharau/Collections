@@ -15,7 +15,10 @@ export default function HeaderCell<Data extends object>({
       onClick={header.column.getToggleSortingHandler()}
       cursor={isSortable ? 'pointer' : 'default'}
     >
-      <Flex align={'center'} justifyContent={meta?.right ? 'flex-end' : 'flex-start'}>
+      <Flex
+        align={'center'}
+        justifyContent={meta?.right ? 'flex-end' : 'flex-start'}
+      >
         {flexRender(header.column.columnDef.header, header.getContext())}
 
         {isSortable ? (
