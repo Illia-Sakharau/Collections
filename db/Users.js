@@ -24,6 +24,11 @@ export default function (sequelize) {
       type: Sequelize.BOOLEAN,
       defaultValue: false,
       allowNull: false
+    },
+    is_blocked: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
     }
   }, {
     tableName: 'users'

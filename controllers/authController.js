@@ -11,6 +11,9 @@ class authController {
       if (!user || !isValidPassword) {
           return res.status(400).json({message: `Invalid email or password!`})
       }
+      if (user.is_blocked) {
+        return res.status(400).json({message: `This user is blocked!`})
+      }
       return res.json(prepareUserInfo(user))
     } catch (error) {
       console.log(error);
