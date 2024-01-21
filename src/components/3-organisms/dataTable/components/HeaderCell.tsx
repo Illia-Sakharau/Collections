@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Flex, Th, chakra } from '@chakra-ui/react';
+import { Flex, Th, chakra, useTheme } from '@chakra-ui/react';
 import { FaSort, FaSortDown, FaSortUp } from 'react-icons/fa';
 import { flexRender, Header } from '@tanstack/react-table';
 
@@ -8,6 +8,7 @@ export default function HeaderCell<Data extends object>({
 }: Header<Data, unknown>) {
   const meta: any = header.column.columnDef.meta;
   const isSortable = header.column.getCanSort();
+  const activColor = useTheme().__cssVars['--chakra-colors-brand-500'];
 
   return (
     <Th
@@ -21,9 +22,9 @@ export default function HeaderCell<Data extends object>({
           <chakra.span pl="4">
             {header.column.getIsSorted() ? (
               header.column.getIsSorted() === 'desc' ? (
-                <FaSortDown aria-label="sorted descending" />
+                <FaSortDown aria-label="sorted descending" color={activColor} />
               ) : (
-                <FaSortUp aria-label="sorted ascending" />
+                <FaSortUp aria-label="sorted ascending" color={activColor} />
               )
             ) : (
               <FaSort aria-label="sorted" />
