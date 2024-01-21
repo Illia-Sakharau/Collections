@@ -13,6 +13,7 @@ const RootLayout = () => {
         as="main"
         alignItems="stretch"
         minH={{ base: 'calc(100vh - 80px)', md: 'calc(100vh - 120px)' }}
+        spacing={'0'}
       >
         <Outlet />
       </VStack>
