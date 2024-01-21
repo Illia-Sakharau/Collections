@@ -25,6 +25,7 @@ export interface IResponseError {
 }
 
 export interface IUserInfo extends Omit<IAuthUserInfo, 'token'> {
+  is_blocked: boolean;
   createdAt: string;
   updatedAt: string;
 }

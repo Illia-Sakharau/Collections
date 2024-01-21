@@ -8,10 +8,11 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import { DataTable } from '../dataTable/DataTable';
-import { Tag } from '@chakra-ui/react';
+import { Tag, TagLabel, TagLeftIcon } from '@chakra-ui/react';
 import DateTimeCell from '@molecules/tableCells/DateTimeCell';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import { FaLock, FaLockOpen } from 'react-icons/fa';
 
 type Props = {
   data: IUserInfo[];
@@ -27,6 +28,21 @@ const UsersTable = ({ data }: Props) => {
       cell: (info) => info.getValue(),
       header: t('users.id'),
       enableSorting: false,
+    }),
+    columnHelper.accessor('is_blocked', {
+      cell: (info) =>
+        info.getValue() ? (
+          <Tag colorScheme="negative">
+            <TagLeftIcon boxSize="12px" as={FaLock} />
+            <TagLabel>Blocked</TagLabel>
+          </Tag>
+        ) : (
+          <Tag colorScheme="brand">
+            <TagLeftIcon boxSize="12px" as={FaLockOpen} />
+            <TagLabel>Active</TagLabel>
+          </Tag>
+        ),
+      header: t('users.state'),
     }),
     columnHelper.accessor('name', {
       cell: (info) => info.getValue(),
