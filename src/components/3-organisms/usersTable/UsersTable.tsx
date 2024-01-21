@@ -3,6 +3,7 @@ import { IUserInfo } from '@/types/api';
 import { createColumnHelper } from '@tanstack/react-table';
 import { DataTable } from '../dataTable/DataTable';
 import { Tag } from '@chakra-ui/react';
+import DateTimeCell from '@molecules/tableCells/DateTimeCell';
 
 type Props = {
   data: IUserInfo[];
@@ -30,31 +31,11 @@ const UsersTable = ({ data }: Props) => {
       header: 'Role',
     }),
     columnHelper.accessor('createdAt', {
-      cell: (info) => {
-        const data = info.getValue().split('T');
-        const date = data[0];
-        const time = data[1].split('.')[0];
-        return (
-          <>
-            <div>{date}</div>
-            <div>{time}</div>
-          </>
-        );
-      },
+      cell: (info) => <DateTimeCell stringDate={info.getValue()} />,
       header: 'Created at',
     }),
     columnHelper.accessor('updatedAt', {
-      cell: (info) => {
-        const data = info.getValue().split('T');
-        const date = data[0];
-        const time = data[1].split('.')[0];
-        return (
-          <>
-            <div>{date}</div>
-            <div>{time}</div>
-          </>
-        );
-      },
+      cell: (info) => <DateTimeCell stringDate={info.getValue()} />,
       header: 'Updated at',
     }),
   ];
