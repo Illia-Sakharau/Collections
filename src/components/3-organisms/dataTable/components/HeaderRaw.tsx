@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Tr } from '@chakra-ui/react';
 import { HeaderGroup } from '@tanstack/react-table';
 import HeaderCell from './HeaderCell';

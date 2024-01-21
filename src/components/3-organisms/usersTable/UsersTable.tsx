@@ -66,7 +66,6 @@ const UsersTable = ({ data }: Props) => {
       }}
     >
       <DataTable columns={columns} data={data} />
-      <div>{JSON.stringify(data)}</div>
     </SectionWrapper>
   );
 };
