@@ -15,6 +15,7 @@ const UsersTable = ({ data }: Props) => {
     columnHelper.accessor('id', {
       cell: (info) => info.getValue(),
       header: 'ID',
+      enableSorting: false,
     }),
     columnHelper.accessor('name', {
       cell: (info) => info.getValue(),
