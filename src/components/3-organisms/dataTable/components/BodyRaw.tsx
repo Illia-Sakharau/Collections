@@ -6,9 +6,9 @@ export default function BodyRaw<Data extends object>({ ...row }: Row<Data>) {
   const hoverBg = useColorModeValue('gray.300', 'gray.700');
 
   return (
-    <Tr key={row.id} _hover={{ bg: hoverBg }}>
+    <Tr _hover={{ bg: hoverBg }}>
       {row.getVisibleCells().map((cell) => (
-        <BodyCell {...cell} />
+        <BodyCell key={cell.id} {...cell} />
       ))}
     </Tr>
   );

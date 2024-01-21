@@ -36,12 +36,12 @@ export function DataTable<Data extends object>({
     <Table>
       <Thead>
         {table.getHeaderGroups().map((headerGroup) => (
-          <HeaderRaw {...headerGroup} />
+          <HeaderRaw key={headerGroup.id} {...headerGroup} />
         ))}
       </Thead>
       <Tbody>
         {table.getRowModel().rows.map((row) => (
-          <BodyRaw {...row} />
+          <BodyRaw key={row.id} {...row} />
         ))}
       </Tbody>
     </Table>

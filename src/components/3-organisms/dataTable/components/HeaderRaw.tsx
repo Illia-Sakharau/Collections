@@ -6,9 +6,9 @@ export default function HeaderRaw<Data extends object>({
   ...headerGroup
 }: HeaderGroup<Data>) {
   return (
-    <Tr key={headerGroup.id}>
+    <Tr>
       {headerGroup.headers.map((header) => (
-        <HeaderCell {...header} />
+        <HeaderCell key={header.id} {...header} />
       ))}
     </Tr>
   );

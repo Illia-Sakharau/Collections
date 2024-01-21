@@ -11,7 +11,6 @@ export default function HeaderCell<Data extends object>({
 
   return (
     <Th
-      key={header.id}
       onClick={header.column.getToggleSortingHandler()}
       cursor={isSortable ? 'pointer' : 'default'}
       isNumeric={meta?.isNumeric}
