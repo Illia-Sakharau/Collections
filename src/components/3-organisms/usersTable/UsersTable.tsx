@@ -35,10 +35,16 @@ const UsersTable = ({ data }: Props) => {
     columnHelper.accessor('createdAt', {
       cell: (info) => <DateTimeCell stringDate={info.getValue()} />,
       header: t('users.createdAt'),
+      meta: {
+        right: true,
+      }
     }),
     columnHelper.accessor('updatedAt', {
       cell: (info) => <DateTimeCell stringDate={info.getValue()} />,
       header: t('users.updatedAt'),
+      meta: {
+        right: true,
+      }
     }),
   ];
 

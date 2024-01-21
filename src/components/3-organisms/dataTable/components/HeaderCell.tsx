@@ -13,9 +13,8 @@ export default function HeaderCell<Data extends object>({
     <Th
       onClick={header.column.getToggleSortingHandler()}
       cursor={isSortable ? 'pointer' : 'default'}
-      isNumeric={meta?.isNumeric}
     >
-      <Flex align={'center'}>
+      <Flex align={'center'} justifyContent={meta?.right ? 'flex-end' : 'flex-start'}>
         {flexRender(header.column.columnDef.header, header.getContext())}
 
         {isSortable ? (

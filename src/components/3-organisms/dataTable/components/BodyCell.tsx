@@ -7,7 +7,7 @@ export default function BodyCell<Data extends object>({
 }: Cell<Data, unknown>) {
   const meta: any = cell.column.columnDef.meta;
   return (
-    <Td isNumeric={meta?.isNumeric}>
+    <Td isNumeric={meta?.right}>
       {flexRender(cell.column.columnDef.cell, cell.getContext())}
     </Td>
   );
