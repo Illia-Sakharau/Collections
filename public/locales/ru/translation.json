@@ -65,6 +65,11 @@
     "createdAt": "Создан",
     "updatedAt": "Изменен"
   },
+  "bulk_bar": {
+    "selected": "Выбрано:",
+    "button_text": "Действия",
+    "message": "Ничего не выбрано!"
+  },
   "other": {
     "passwordBtn": "Кнопка показать/скрыть пароль"
   }

@@ -13,6 +13,8 @@ import DateTimeCell from '@molecules/tableCells/DateTimeCell';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { FaLock, FaLockOpen } from 'react-icons/fa';
+import BulkBar from '../bulkBar/BulkBar';
+import { BULK_ACTIONS } from './costants';
 
 type Props = {
   data: IUserInfo[];
@@ -91,13 +93,10 @@ const UsersTable = ({ data }: Props) => {
         pt: { base: 0, md: 0, xl: 0 },
       }}
     >
-      <button
-        onClick={() => {
-          console.log(Object.keys(table.getState().rowSelection));
-        }}
-      >
-        select
-      </button>
+      <BulkBar
+        rowSelection={table.getState().rowSelection}
+        actions={BULK_ACTIONS}
+      />
       <DataTable columns={columns} isSelected table={table} />
     </SectionWrapper>
   );

@@ -65,6 +65,11 @@
     "createdAt": "Created at",
     "updatedAt": "Updated at"
   },
+  "bulk_bar": {
+    "selected": "Selected:",
+    "button_text": "Actions",
+    "message": "Choose at least one item!"
+  },
   "other": {
     "passwordBtn": "Show/Hidden password button"
   }
