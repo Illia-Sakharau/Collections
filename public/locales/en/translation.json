@@ -68,7 +68,9 @@
     "unblock": "Unblock",
     "do_admin": "Do admin",
     "unadmin": "Unadmin",
-    "delete": "Delete"
+    "delete": "Delete",
+    "delete_msg_success": "Deleted {{count}} user(s)",
+    "msg_error": "Something went wrong!"
   },
   "bulk_bar": {
     "selected": "Selected:",

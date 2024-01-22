@@ -20,8 +20,18 @@ const usersAPI = createApi({
         url: '/all',
       }),
     }),
+
+    deleteUsers: build.mutation<IUserInfo[], number[]>({
+      query: (IDs) => ({
+        url: `/delete`,
+        method: 'DELETE',
+        body: {
+          IDs,
+        },
+      }),
+    }),
   }),
 });
 
 export default usersAPI;
-export const { useGetAllUsersQuery } = usersAPI;
+export const { useGetAllUsersQuery, useDeleteUsersMutation } = usersAPI;

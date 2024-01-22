@@ -68,7 +68,9 @@
     "unblock": "Разблок",
     "do_admin": "Админ",
     "unadmin": "Не админ",
-    "delete": "Удалить"
+    "delete": "Удалить",
+    "delete_msg_success": "Удалено {{count}} пользователей",
+    "msg_error": "Something went wrong!"
   },
   "bulk_bar": {
     "selected": "Выбрано:",

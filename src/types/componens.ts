@@ -14,5 +14,5 @@ export type bulkAction = {
   text: string;
   icon: ReactElement;
   colorScheme?: string;
-  action: (itemsID: number[] | string[]) => void;
+  action: (itemsID: number[]) => void;
 };

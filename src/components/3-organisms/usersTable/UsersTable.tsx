@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { FaLock, FaLockOpen } from 'react-icons/fa';
 import BulkBar from '../bulkBar/BulkBar';
-import { BULK_ACTIONS } from './costants';
+import useBulkUsers from './hooks/useBulkUsers';
 
 type Props = {
   data: IUserInfo[];
@@ -24,6 +24,7 @@ const UsersTable = ({ data }: Props) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const { t } = useTranslation();
   const columnHelper = createColumnHelper<IUserInfo>();
+  const bulkActions = useBulkUsers();
 
   const columns = [
     columnHelper.accessor('id', {
@@ -95,7 +96,7 @@ const UsersTable = ({ data }: Props) => {
     >
       <BulkBar
         rowSelection={table.getState().rowSelection}
-        actions={BULK_ACTIONS(t)}
+        actions={bulkActions}
       />
       <DataTable columns={columns} isSelected table={table} />
     </SectionWrapper>
