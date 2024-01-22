@@ -1,7 +1,4 @@
-import {
-  useDeleteUsersMutation,
-  useSetUsersStateMutation,
-} from '@/API/usersAPI';
+import { useDeleteUsersMutation, useUpdateUsersMutation } from '@/API/usersAPI';
 import { bulkAction } from '@/types/componens';
 import { useToast } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
@@ -16,7 +13,7 @@ import {
 const useBulkUsers = () => {
   const { t } = useTranslation();
   const [deleteUsers] = useDeleteUsersMutation();
-  const [setUsersState] = useSetUsersStateMutation();
+  const [updateUsers] = useUpdateUsersMutation();
   const toast = useToast();
 
   const showErrorMessage = () =>
@@ -41,7 +38,7 @@ const useBulkUsers = () => {
       text: t('users.block'),
       icon: <FaLock />,
       action: (items) => {
-        setUsersState({ IDs: items, newState: true })
+        updateUsers({ IDs: items, updates: { is_blocked: true } })
           .unwrap()
           .then(() =>
             showSuccessMessage(
@@ -55,7 +52,7 @@ const useBulkUsers = () => {
       text: t('users.unblock'),
       icon: <FaUnlockAlt />,
       action: (items) => {
-        setUsersState({ IDs: items, newState: false })
+        updateUsers({ IDs: items, updates: { is_blocked: false } })
           .unwrap()
           .then(() =>
             showSuccessMessage(

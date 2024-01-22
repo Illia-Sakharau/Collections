@@ -9,6 +9,14 @@ export interface IRegistrationReques {
   password: string;
 }
 
+export interface IUpdateUsersReques {
+  IDs: number[];
+  updates: {
+    is_admin?: boolean;
+    is_blocked?: boolean;
+  };
+}
+
 export interface IAuthUserInfo {
   id: number | null;
   name: string | null;

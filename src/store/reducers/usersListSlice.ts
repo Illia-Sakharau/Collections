@@ -20,7 +20,7 @@ export const usersListSlice = createSlice({
   reducers: {
     rebootUsersListSlice() {
       return initialState;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -48,7 +48,7 @@ export const usersListSlice = createSlice({
         state.error = undefined;
         state.users = undefined;
       })
-      .addMatcher(usersAPI.endpoints.setUsersState.matchPending, (state) => {
+      .addMatcher(usersAPI.endpoints.updateUsers.matchPending, (state) => {
         state.isLoading = true;
         state.error = undefined;
         state.users = undefined;

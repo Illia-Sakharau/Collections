@@ -1,5 +1,5 @@
 import { RootState } from '@/store/store';
-import { IUserInfo } from '@/types/api';
+import { IUpdateUsersReques, IUserInfo } from '@/types/api';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const usersAPI = createApi({
@@ -34,13 +34,10 @@ const usersAPI = createApi({
       invalidatesTags: ['Users'],
     }),
 
-    setUsersState: build.mutation<
-      IUserInfo[],
-      { IDs: number[]; newState: boolean }
-    >({
+    updateUsers: build.mutation<IUserInfo[], IUpdateUsersReques>({
       query: (body) => ({
-        url: `/state`,
-        method: 'POST',
+        url: `/update`,
+        method: 'PATCH',
         body: body,
       }),
       invalidatesTags: ['Users'],
@@ -52,5 +49,5 @@ export default usersAPI;
 export const {
   useGetAllUsersQuery,
   useDeleteUsersMutation,
-  useSetUsersStateMutation,
+  useUpdateUsersMutation,
 } = usersAPI;
