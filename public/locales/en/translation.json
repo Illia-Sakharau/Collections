@@ -69,6 +69,8 @@
     "do_admin": "Do admin",
     "unadmin": "Unadmin",
     "delete": "Delete",
+    "block_msg_success": "Blocked {{count}} user(s)",
+    "unblock_msg_success": "Unblocked {{count}} user(s)",
     "delete_msg_success": "Deleted {{count}} user(s)",
     "msg_error": "Something went wrong!"
   },

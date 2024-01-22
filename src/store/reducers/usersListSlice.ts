@@ -34,9 +34,9 @@ export const usersListSlice = createSlice({
       )
       .addMatcher(
         usersAPI.endpoints.getAllUsers.matchRejected,
-        (state, { error }) => {
+        (state, { payload }) => {
           state.isLoading = false;
-          state.error = error as IResponseError;
+          state.error = payload as IResponseError;
         }
       )
       .addMatcher(usersAPI.endpoints.deleteUsers.matchPending, (state) => {
@@ -44,6 +44,11 @@ export const usersListSlice = createSlice({
         state.error = undefined;
         state.users = undefined;
       })
+      .addMatcher(usersAPI.endpoints.setUsersState.matchPending, (state) => {
+        state.isLoading = true;
+        state.error = undefined;
+        state.users = undefined;
+      });
   },
 });
 

@@ -69,6 +69,8 @@
     "do_admin": "Админ",
     "unadmin": "Не админ",
     "delete": "Удалить",
+    "block_msg_success": "Заблокированно {{count}} пользователей",
+    "unblock_msg_success": "Разблокированно {{count}} пользователей",
     "delete_msg_success": "Удалено {{count}} пользователей",
     "msg_error": "Something went wrong!"
   },

@@ -20,7 +20,7 @@ const usersAPI = createApi({
       query: () => ({
         url: '/all',
       }),
-      providesTags: ['Users']
+      providesTags: ['Users'],
     }),
 
     deleteUsers: build.mutation<IUserInfo[], number[]>({
@@ -31,10 +31,26 @@ const usersAPI = createApi({
           IDs,
         },
       }),
-      invalidatesTags: ['Users']
+      invalidatesTags: ['Users'],
+    }),
+
+    setUsersState: build.mutation<
+      IUserInfo[],
+      { IDs: number[]; newState: boolean }
+    >({
+      query: (body) => ({
+        url: `/state`,
+        method: 'POST',
+        body: body,
+      }),
+      invalidatesTags: ['Users'],
     }),
   }),
 });
 
 export default usersAPI;
-export const { useGetAllUsersQuery, useDeleteUsersMutation } = usersAPI;
+export const {
+  useGetAllUsersQuery,
+  useDeleteUsersMutation,
+  useSetUsersStateMutation,
+} = usersAPI;

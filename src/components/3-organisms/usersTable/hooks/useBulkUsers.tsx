@@ -1,4 +1,7 @@
-import { useDeleteUsersMutation } from '@/API/usersAPI';
+import {
+  useDeleteUsersMutation,
+  useSetUsersStateMutation,
+} from '@/API/usersAPI';
 import { bulkAction } from '@/types/componens';
 import { useToast } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
@@ -13,23 +16,53 @@ import {
 const useBulkUsers = () => {
   const { t } = useTranslation();
   const [deleteUsers] = useDeleteUsersMutation();
+  const [setUsersState] = useSetUsersStateMutation();
   const toast = useToast();
+
+  const showErrorMessage = () =>
+    toast({
+      description: t('users.msg_error'),
+      status: 'error',
+      position: 'bottom-left',
+      duration: 10000,
+      isClosable: true,
+    });
+  const showSuccessMessage = (message: string) =>
+    toast({
+      description: message,
+      status: 'success',
+      position: 'bottom-left',
+      duration: 10000,
+      isClosable: true,
+    });
 
   const bulkActions: bulkAction[] = [
     {
       text: t('users.block'),
       icon: <FaLock />,
       action: (items) => {
-        console.log('block');
-        console.log(items);
+        setUsersState({ IDs: items, newState: true })
+          .unwrap()
+          .then(() =>
+            showSuccessMessage(
+              t('users.block_msg_success', { count: items.length })
+            )
+          )
+          .catch(() => showErrorMessage);
       },
     },
     {
       text: t('users.unblock'),
       icon: <FaUnlockAlt />,
       action: (items) => {
-        console.log('unblock');
-        console.log(items);
+        setUsersState({ IDs: items, newState: false })
+          .unwrap()
+          .then(() =>
+            showSuccessMessage(
+              t('users.unblock_msg_success', { count: items.length })
+            )
+          )
+          .catch(() => showErrorMessage);
       },
     },
     {
@@ -55,26 +88,12 @@ const useBulkUsers = () => {
       action: (items) => {
         deleteUsers(items)
           .unwrap()
-          .then(() => {
-            toast({
-              description: t('users.delete_msg_success', {
-                count: items.length,
-              }),
-              status: 'success',
-              position: 'bottom-left',
-              duration: 10000,
-              isClosable: true,
-            });
-          })
-          .catch(() => {
-            toast({
-              description: t('users.msg_error'),
-              status: 'error',
-              position: 'bottom-left',
-              duration: 10000,
-              isClosable: true,
-            });
-          });
+          .then(() =>
+            showSuccessMessage(
+              t('users.delete_msg_success', { count: items.length })
+            )
+          )
+          .catch(() => showErrorMessage);
       },
     },
   ];
