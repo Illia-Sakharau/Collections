@@ -6,6 +6,6 @@ const router = new Router();
 
 router.get('/all', adminMiddleware, userController.getUsers)
 router.delete('/delete', adminMiddleware, userController.deleteUsers)
-router.post('/state', adminMiddleware, userController.changeState)
+router.patch('/update', adminMiddleware, userController.updateUser)
 
 export default router;

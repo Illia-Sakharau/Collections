@@ -27,10 +27,10 @@ class usersController {
       res.status(400).json({message: 'Delete error'})
     }
   }
-  async changeState (req, res) {
+  async updateUser (req, res) {
     try {
-      const { IDs, newState } = req.body;
-      await UsersTB.update({ is_blocked:  newState},{
+      const { IDs, updates } = req.body;
+      await UsersTB.update(updates,{
         where: {
           id: IDs
         },
@@ -40,7 +40,7 @@ class usersController {
       res.json(users);
     } catch (error) {
       console.log(error);
-      res.status(400).json({message: 'State error'})
+      res.status(400).json({message: 'Update error'})
     }
   }
 }
