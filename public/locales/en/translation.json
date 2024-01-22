@@ -76,6 +76,13 @@
     "delete_msg_success": "Deleted {{count}} user(s)",
     "msg_error": "Something went wrong!"
   },
+  "collections": {
+    "title": "Collections",
+    "tabs": {
+      "my": "My collections",
+      "all": "All Collections"
+    }
+  },
   "bulk_bar": {
     "selected": "Selected:",
     "button_text": "Actions",

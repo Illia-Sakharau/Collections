@@ -76,6 +76,13 @@
     "delete_msg_success": "Удалено {{count}} пользователей",
     "msg_error": "Something went wrong!"
   },
+  "collections": {
+    "title": "Коллекции",
+    "tabs": {
+      "my": "Мои коллекции",
+      "all": "Все коллекции"
+    }
+  },
   "bulk_bar": {
     "selected": "Выбрано:",
     "button_text": "Действия",
