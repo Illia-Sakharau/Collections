@@ -1,10 +1,14 @@
 import { useGetAllUsersQuery } from '@/API/usersAPI';
 import PageLoading from '@/components/1-atoms/PageLoading';
+import { useAppSelector } from '@/hooks/redux';
 import PageHeading from '@atoms/PageHeading';
 import UsersTable from '@organisms/usersTable/UsersTable';
 
 export default () => {
-  const { isLoading, data, error } = useGetAllUsersQuery();
+  useGetAllUsersQuery();
+  const { isLoading, users, error } = useAppSelector(
+    (state) => state.usersListReducer
+  );
 
   if (error) {
     throw error;
@@ -14,7 +18,7 @@ export default () => {
     <>
       <PageHeading pageTitle={'Users'} />
       {isLoading && <PageLoading />}
-      {data && <UsersTable data={data} />}
+      {users && <UsersTable data={users} />}
       {error && <div>{JSON.stringify(error)}</div>}
     </>
   );
