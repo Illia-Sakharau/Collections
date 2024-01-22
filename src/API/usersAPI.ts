@@ -14,11 +14,13 @@ const usersAPI = createApi({
       return headers;
     },
   }),
+  tagTypes: ['Users'],
   endpoints: (build) => ({
     getAllUsers: build.query<IUserInfo[], void>({
       query: () => ({
         url: '/all',
       }),
+      providesTags: ['Users']
     }),
 
     deleteUsers: build.mutation<IUserInfo[], number[]>({
@@ -29,6 +31,7 @@ const usersAPI = createApi({
           IDs,
         },
       }),
+      invalidatesTags: ['Users']
     }),
   }),
 });

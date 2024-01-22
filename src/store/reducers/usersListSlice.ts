@@ -44,20 +44,6 @@ export const usersListSlice = createSlice({
         state.error = undefined;
         state.users = undefined;
       })
-      .addMatcher(
-        usersAPI.endpoints.deleteUsers.matchFulfilled,
-        (state, { payload }) => {
-          state.isLoading = false;
-          state.users = payload;
-        }
-      )
-      .addMatcher(
-        usersAPI.endpoints.deleteUsers.matchRejected,
-        (state, { error }) => {
-          state.isLoading = false;
-          state.error = error as IResponseError;
-        }
-      );
   },
 });
 
