@@ -63,7 +63,12 @@
     "role": "Role",
     "state": "State",
     "createdAt": "Created at",
-    "updatedAt": "Updated at"
+    "updatedAt": "Updated at",
+    "block": "Block",
+    "unblock": "Unblock",
+    "do_admin": "Do admin",
+    "unadmin": "Unadmin",
+    "delete": "Delete"
   },
   "bulk_bar": {
     "selected": "Selected:",

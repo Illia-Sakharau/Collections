@@ -95,7 +95,7 @@ const UsersTable = ({ data }: Props) => {
     >
       <BulkBar
         rowSelection={table.getState().rowSelection}
-        actions={BULK_ACTIONS}
+        actions={BULK_ACTIONS(t)}
       />
       <DataTable columns={columns} isSelected table={table} />
     </SectionWrapper>

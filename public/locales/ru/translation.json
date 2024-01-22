@@ -63,7 +63,12 @@
     "role": "Роль",
     "state": "Статус",
     "createdAt": "Создан",
-    "updatedAt": "Изменен"
+    "updatedAt": "Изменен",
+    "block": "Блок",
+    "unblock": "Разблок",
+    "do_admin": "Админ",
+    "unadmin": "Не админ",
+    "delete": "Удалить"
   },
   "bulk_bar": {
     "selected": "Выбрано:",
