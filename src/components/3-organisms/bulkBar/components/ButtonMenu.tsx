@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { FaEllipsisV } from 'react-icons/fa';
 
 type Props = {
-  selectedID: number[] | string[];
+  selectedID: number[];
   actions: bulkAction[];
 };
 

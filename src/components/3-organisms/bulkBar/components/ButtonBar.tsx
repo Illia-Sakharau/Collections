@@ -3,7 +3,7 @@ import { HStack, Button, useToast } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
 type Props = {
-  selectedID: number[] | string[];
+  selectedID: number[];
   actions: bulkAction[];
 };
 
