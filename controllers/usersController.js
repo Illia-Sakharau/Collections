@@ -27,6 +27,22 @@ class usersController {
       res.status(400).json({message: 'Delete error'})
     }
   }
+  async changeState (req, res) {
+    try {
+      const { IDs, newState } = req.body;
+      await UsersTB.update({ is_blocked:  newState},{
+        where: {
+          id: IDs
+        },
+      });
+      
+      const users = await UsersTB.findAll();
+      res.json(users);
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({message: 'State error'})
+    }
+  }
 }
 
 export default new usersController();
