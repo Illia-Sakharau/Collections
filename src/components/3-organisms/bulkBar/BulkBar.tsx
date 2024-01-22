@@ -22,7 +22,7 @@ const BulkBar = ({ rowSelection, actions, ...props }: Props) => {
   const borderColor = useColorModeValue('gray.300', 'gray.700');
   const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
   const { t } = useTranslation();
-  const selectedID = Object.keys(rowSelection);
+  const selectedID = Object.keys(rowSelection).map((id) => +id);
   const selectedCount = selectedID.length;
 
   return (
