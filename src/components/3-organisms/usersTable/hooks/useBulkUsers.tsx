@@ -66,16 +66,28 @@ const useBulkUsers = () => {
       text: t('users.do_admin'),
       icon: <FaUserTie />,
       action: (items) => {
-        console.log('do_admin');
-        console.log(items);
+        updateUsers({ IDs: items, updates: { is_admin: true } })
+          .unwrap()
+          .then(() =>
+            showSuccessMessage(
+              t('users.role_msg_success', { count: items.length })
+            )
+          )
+          .catch(() => showErrorMessage);
       },
     },
     {
       text: t('users.unadmin'),
       icon: <FaUser />,
       action: (items) => {
-        console.log('unadmin');
-        console.log(items);
+        updateUsers({ IDs: items, updates: { is_admin: false } })
+          .unwrap()
+          .then(() =>
+            showSuccessMessage(
+              t('users.role_msg_success', { count: items.length })
+            )
+          )
+          .catch(() => showErrorMessage);
       },
     },
     {

@@ -71,6 +71,7 @@
     "delete": "Удалить",
     "block_msg_success": "Заблокированно {{count}} пользователей",
     "unblock_msg_success": "Разблокированно {{count}} пользователей",
+    "role_msg_success": "У {{count}} пользователей поменяна роль",
     "delete_msg_success": "Удалено {{count}} пользователей",
     "msg_error": "Something went wrong!"
   },
