@@ -57,6 +57,7 @@
     }
   },
   "users": {
+    "title": "Users",
     "id": "ID",
     "name": "Name",
     "email": "Email",
