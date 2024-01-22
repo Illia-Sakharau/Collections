@@ -17,7 +17,11 @@ const initialState: UsersState = {
 export const usersListSlice = createSlice({
   name: 'usersList',
   initialState,
-  reducers: {},
+  reducers: {
+    rebootUsersListSlice() {
+      return initialState;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addMatcher(usersAPI.endpoints.getAllUsers.matchPending, (state) => {

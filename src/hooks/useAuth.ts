@@ -5,11 +5,13 @@ import { NavRoutes } from '@/router/routes';
 import { useLoginMutation, useRegistrationMutation } from '@/API/authAPI';
 // import { useEffect } from 'react';
 import { ILoginReques, IRegistrationReques } from '@/types/api';
+import { usersListSlice } from '@/store/reducers/usersListSlice';
 
 export default () => {
   const [login, loginProps] = useLoginMutation();
   const [registration, registrationProps] = useRegistrationMutation();
   const { removeUser, setIsAdmin } = userSlice.actions;
+  const { rebootUsersListSlice } = usersListSlice.actions;
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.userReducer);
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ export default () => {
 
   const logoutAction = () => {
     dispatch(removeUser());
+    dispatch(rebootUsersListSlice());
     localStorage.removeItem('user');
   };
 
