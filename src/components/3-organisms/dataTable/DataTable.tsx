@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Table, Thead, Tbody, Checkbox } from '@chakra-ui/react';
+import {
+  Table,
+  Thead,
+  Tbody,
+  Checkbox,
+  TableContainer,
+} from '@chakra-ui/react';
 import { ColumnDef, Table as TableG, Row } from '@tanstack/react-table';
 import BodyRaw from './components/BodyRaw';
 import HeaderRaw from './components/HeaderRaw';
@@ -38,28 +44,30 @@ export function DataTable<Data extends object>({
   }
 
   return (
-    <Table>
-      <Thead>
-        {table.getHeaderGroups().map((headerGroup) => (
-          <HeaderRaw key={headerGroup.id} {...headerGroup} />
-        ))}
-      </Thead>
-      <Tbody>
-        {table.getRowModel().rows.map((row) => (
-          <BodyRaw
-            key={row.id}
-            trProps={
-              isSelected
-                ? {
-                    onClick: row.getToggleSelectedHandler(),
-                    cursor: 'pointer',
-                  }
-                : undefined
-            }
-            {...row}
-          />
-        ))}
-      </Tbody>
-    </Table>
+    <TableContainer>
+      <Table>
+        <Thead>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <HeaderRaw key={headerGroup.id} {...headerGroup} />
+          ))}
+        </Thead>
+        <Tbody>
+          {table.getRowModel().rows.map((row) => (
+            <BodyRaw
+              key={row.id}
+              trProps={
+                isSelected
+                  ? {
+                      onClick: row.getToggleSelectedHandler(),
+                      cursor: 'pointer',
+                    }
+                  : undefined
+              }
+              {...row}
+            />
+          ))}
+        </Tbody>
+      </Table>
+    </TableContainer>
   );
 }
