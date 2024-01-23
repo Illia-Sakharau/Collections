@@ -29,16 +29,13 @@ const useDefUsersTable = ({ data, isAll }: Props) => {
     columnHelper.display({
       id: 'actions',
       header: t('collections.table.actions'),
-      cell: (table) => {
-        console.log(table);
-        return (
-          <ButtonMenu
-            selectedID={[+table.row.id]}
-            size="sm"
-            actions={itemAction}
-          />
-        );
-      },
+      cell: (table) => (
+        <ButtonMenu
+          selectedID={[+table.row.id]}
+          size="sm"
+          actions={itemAction}
+        />
+      ),
     }),
     columnHelper.accessor('imgUrl', {
       cell: (info) => <ImageCell imgUrl={info.getValue()} />,

@@ -6,9 +6,20 @@ export default function HeaderRaw<Data extends object>({
   ...headerGroup
 }: HeaderGroup<Data>) {
   return (
-    <Tr>
+    <Tr position={'relative'}>
       {headerGroup.headers.map((header) => (
-        <HeaderCell key={header.id} {...header} />
+        <HeaderCell
+          key={header.id}
+          hCellProps={
+            header.column.id === 'actions'
+              ? {
+                  position: 'absolute',
+                  height: '100%',
+                }
+              : undefined
+          }
+          {...header}
+        />
       ))}
     </Tr>
   );

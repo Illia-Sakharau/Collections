@@ -1,11 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Flex, Th, chakra, useTheme } from '@chakra-ui/react';
+import {
+  Flex,
+  TableColumnHeaderProps,
+  Th,
+  chakra,
+  useTheme,
+} from '@chakra-ui/react';
 import { FaSort, FaSortDown, FaSortUp } from 'react-icons/fa';
 import { flexRender, Header } from '@tanstack/react-table';
 
 export default function HeaderCell<Data extends object>({
+  hCellProps,
   ...header
-}: Header<Data, unknown>) {
+}: Header<Data, unknown> & { hCellProps?: TableColumnHeaderProps }) {
   const meta: any = header.column.columnDef.meta;
   const isSortable = header.column.getCanSort();
   const activColor = useTheme().__cssVars['--chakra-colors-brand-500'];
@@ -14,6 +21,7 @@ export default function HeaderCell<Data extends object>({
     <Th
       onClick={header.column.getToggleSortingHandler()}
       cursor={isSortable ? 'pointer' : 'default'}
+      {...hCellProps}
     >
       <Flex
         align={'center'}
