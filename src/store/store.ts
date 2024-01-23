@@ -3,10 +3,12 @@ import { userReducer } from './reducers/userSlice';
 import authAPI from '@/API/authAPI';
 import usersAPI from '@/API/usersAPI';
 import { usersListReducer } from './reducers/usersListSlice';
+import { collectionsListReducer } from './reducers/CollectionsListSlice';
 
 const rootReducer = combineReducers({
   userReducer,
   usersListReducer,
+  collectionsListReducer,
   [authAPI.reducerPath]: authAPI.reducer,
   [usersAPI.reducerPath]: usersAPI.reducer,
 });

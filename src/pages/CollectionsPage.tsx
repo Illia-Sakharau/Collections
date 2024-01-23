@@ -4,10 +4,15 @@ import CollectionsTable from '@organisms/collectionsTable/CollectionsTable';
 import useAuth from '@/hooks/useAuth';
 import { useTranslation } from 'react-i18next';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import { useAppSelector } from '@/hooks/redux';
+import PageLoading from '@/components/1-atoms/PageLoading';
 
 export default () => {
   const { t } = useTranslation();
   const { isAdmin } = useAuth();
+  const { collections, error, isLoading } = useAppSelector(
+    (state) => state.collectionsListReducer
+  );
 
   return (
     <>
@@ -25,15 +30,19 @@ export default () => {
             </TabList>
             <TabPanels>
               <TabPanel p={0} pt={4}>
-                <CollectionsTable />
+                {isLoading && <PageLoading />}
+                {collections && <CollectionsTable data={collections} />}
+                {error && <div>{JSON.stringify(error)}</div>}
               </TabPanel>
               <TabPanel p={0} pt={4}>
-                <CollectionsTable isAll={true} />
+                {isLoading && <PageLoading />}
+                {collections && <CollectionsTable data={collections} isAll />}
+                {error && <div>{JSON.stringify(error)}</div>}
               </TabPanel>
             </TabPanels>
           </Tabs>
         ) : (
-          <CollectionsTable />
+          <>{collections && <CollectionsTable data={collections} />}</>
         )}
       </SectionWrapper>
     </>
