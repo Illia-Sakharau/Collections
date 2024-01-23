@@ -8,8 +8,8 @@ import {
 } from '@tanstack/react-table';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ImageCell from '../components/ImageCell';
-import DescriptionCell from '../components/DescriptionCell';
+import ImageCell from '../../../2-molecules/tableCells/ImageCell';
+import DescriptionCell from '../../../2-molecules/tableCells/DescriptionCell';
 
 type Props = {
   data: ICollectionInfo[];
