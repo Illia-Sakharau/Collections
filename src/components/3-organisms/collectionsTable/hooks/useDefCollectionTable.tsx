@@ -43,13 +43,13 @@ const useDefUsersTable = ({ data, isAll }: Props) => {
     }),
   ];
 
-  if (isAll) columns.push(
-    columnHelper.accessor('username', {
-      cell: (info) => info.getValue(),
-      header: t('collections.table.owner'),
-    })
-  )
-
+  if (isAll)
+    columns.push(
+      columnHelper.accessor('username', {
+        cell: (info) => info.getValue(),
+        header: t('collections.table.owner'),
+      })
+    );
 
   const table = useReactTable({
     columns,

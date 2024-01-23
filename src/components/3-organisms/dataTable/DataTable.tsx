@@ -14,12 +14,14 @@ export type DataTableProps<Data extends object> = {
   columns?: ColumnDef<Data, any>[];
   table: TableG<Data>;
   isSelected?: boolean;
+  onRowClick?: (rowID: string) => void;
 };
 
 export function DataTable<Data extends object>({
   columns,
   table,
   isSelected = false,
+  onRowClick,
 }: DataTableProps<Data>) {
   if (isSelected) {
     columns?.unshift({
@@ -56,9 +58,11 @@ export function DataTable<Data extends object>({
             <BodyRaw
               key={row.id}
               trProps={
-                isSelected
+                isSelected || onRowClick
                   ? {
-                      onClick: row.getToggleSelectedHandler(),
+                      onClick: onRowClick
+                        ? () => onRowClick(row.id)
+                        : row.getToggleSelectedHandler(),
                       cursor: 'pointer',
                     }
                   : undefined

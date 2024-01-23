@@ -1,6 +1,7 @@
 import { ICollectionInfo } from '@/types/api';
 import useDefCollectionTable from './hooks/useDefCollectionTable';
 import { DataTable } from '@organisms/dataTable/DataTable';
+import useRowClick from './hooks/useRowClick';
 
 type Props = {
   isAll?: boolean;
@@ -38,9 +39,9 @@ const data: ICollectionInfo[] = [
 
 const CollectionsTable = ({ isAll }: Props) => {
   const { table } = useDefCollectionTable({ data, isAll: !!isAll });
-  return (
-    <DataTable table={table} />
-  );
+  const rowClickHandler = useRowClick();
+
+  return <DataTable table={table} onRowClick={rowClickHandler} />;
 };
 
 export default CollectionsTable;
