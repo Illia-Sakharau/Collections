@@ -11,6 +11,8 @@ import { useTranslation } from 'react-i18next';
 import ImageCell from '../../../2-molecules/tableCells/ImageCell';
 import DescriptionCell from '../../../2-molecules/tableCells/DescriptionCell';
 import { Tag } from '@chakra-ui/react';
+import useCollectionActions from './useCollectionActions';
+import ButtonMenu from '@/components/2-molecules/ButtonMenu';
 
 type Props = {
   data: ICollectionInfo[];
@@ -21,8 +23,23 @@ const useDefUsersTable = ({ data, isAll }: Props) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const { t } = useTranslation();
   const columnHelper = createColumnHelper<ICollectionInfo>();
+  const itemAction = useCollectionActions();
 
   const columns = [
+    columnHelper.display({
+      id: 'actions',
+      header: t('collections.table.actions'),
+      cell: (table) => {
+        console.log(table);
+        return (
+          <ButtonMenu
+            selectedID={[+table.row.id]}
+            size="sm"
+            actions={itemAction}
+          />
+        );
+      },
+    }),
     columnHelper.accessor('imgUrl', {
       cell: (info) => <ImageCell imgUrl={info.getValue()} />,
       header: t('collections.table.image'),

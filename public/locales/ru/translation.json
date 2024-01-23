@@ -87,7 +87,12 @@
       "title": "Название",
       "description": "Описание",
       "theme": "Тема",
-      "owner": "Владелец"
+      "owner": "Владелец",
+      "actions": ""
+    },
+    "actions": {
+      "edit": "Редактировать",
+      "delete": "Удалить"
     }
   },
   "bulk_bar": {

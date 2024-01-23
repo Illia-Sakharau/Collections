@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { RowSelectionState } from '@tanstack/react-table';
 import ButtonBar from './components/ButtonBar';
-import ButtonMenu from './components/ButtonMenu';
+import ButtonMenu from '../../2-molecules/ButtonMenu';
 import { useTranslation } from 'react-i18next';
 
 type Props = {

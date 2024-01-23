@@ -87,7 +87,12 @@
       "title": "Title",
       "description": "Description",
       "theme": "Theme",
-      "owner": "Owner"
+      "owner": "Owner",
+      "actions": ""
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete"
     }
   },
   "bulk_bar": {
