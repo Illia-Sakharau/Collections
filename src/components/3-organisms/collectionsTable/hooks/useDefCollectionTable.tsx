@@ -10,12 +10,14 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ImageCell from '../../../2-molecules/tableCells/ImageCell';
 import DescriptionCell from '../../../2-molecules/tableCells/DescriptionCell';
+import { Tag } from '@chakra-ui/react';
 
 type Props = {
   data: ICollectionInfo[];
+  isAll: boolean;
 };
 
-const useDefUsersTable = ({ data }: Props) => {
+const useDefUsersTable = ({ data, isAll }: Props) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const { t } = useTranslation();
   const columnHelper = createColumnHelper<ICollectionInfo>();
@@ -36,14 +38,18 @@ const useDefUsersTable = ({ data }: Props) => {
       enableSorting: false,
     }),
     columnHelper.accessor('theme', {
-      cell: (info) => info.getValue(),
+      cell: (info) => <Tag border={'solid 1px'}>{info.getValue()}</Tag>,
       header: t('collections.table.theme'),
     }),
+  ];
+
+  if (isAll) columns.push(
     columnHelper.accessor('username', {
       cell: (info) => info.getValue(),
       header: t('collections.table.owner'),
-    }),
-  ];
+    })
+  )
+
 
   const table = useReactTable({
     columns,

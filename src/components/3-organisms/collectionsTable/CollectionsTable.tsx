@@ -37,9 +37,9 @@ const data: ICollectionInfo[] = [
 ];
 
 const CollectionsTable = ({ isAll }: Props) => {
-  const { table } = useDefCollectionTable({ data });
+  const { table } = useDefCollectionTable({ data, isAll: !!isAll });
   return (
-    <>{isAll ? <DataTable table={table} /> : <DataTable table={table} />}</>
+    <DataTable table={table} />
   );
 };
 
