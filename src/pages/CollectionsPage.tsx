@@ -18,7 +18,7 @@ export default () => {
         }}
       >
         {isAdmin ? (
-          <Tabs size="md" variant="enclosed" colorScheme="brand">
+          <Tabs variant="line" colorScheme="brand" isLazy>
             <TabList>
               <Tab>{t('collections.tabs.my')}</Tab>
               <Tab>{t('collections.tabs.all')}</Tab>
