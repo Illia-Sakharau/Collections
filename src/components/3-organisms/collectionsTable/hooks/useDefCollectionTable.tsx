@@ -9,6 +9,7 @@ import {
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ImageCell from '../components/ImageCell';
+import DescriptionCell from '../components/DescriptionCell';
 
 type Props = {
   data: ICollectionInfo[];
@@ -30,7 +31,7 @@ const useDefUsersTable = ({ data }: Props) => {
       header: t('collections.table.title'),
     }),
     columnHelper.accessor('description', {
-      cell: (info) => info.getValue(),
+      cell: (info) => <DescriptionCell text={info.getValue()} />,
       header: t('collections.table.description'),
       enableSorting: false,
     }),

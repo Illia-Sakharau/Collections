@@ -9,7 +9,7 @@ const ImageCell = ({ imgUrl }: Props) => {
   return (
     <Image
       borderRadius="full"
-      boxSize={{ base: '40px', md: '80px' }}
+      boxSize="80px"
       minW="40px"
       src={imgUrl}
       fallbackSrc={NO_IMG}
