@@ -8,6 +8,7 @@ import {
 } from '@tanstack/react-table';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import ImageCell from '../components/ImageCell';
 
 type Props = {
   data: ICollectionInfo[];
@@ -20,7 +21,7 @@ const useDefUsersTable = ({ data }: Props) => {
 
   const columns = [
     columnHelper.accessor('imgUrl', {
-      cell: (info) => info.getValue(),
+      cell: (info) => <ImageCell imgUrl={info.getValue()} />,
       header: t('collections.table.image'),
       enableSorting: false,
     }),
