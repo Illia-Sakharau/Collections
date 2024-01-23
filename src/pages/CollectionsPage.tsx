@@ -24,10 +24,10 @@ export default () => {
               <Tab>{t('collections.tabs.all')}</Tab>
             </TabList>
             <TabPanels>
-              <TabPanel>
+              <TabPanel p={0} pt={4}>
                 <CollectionsTable />
               </TabPanel>
-              <TabPanel>
+              <TabPanel p={0} pt={4}>
                 <CollectionsTable isAll={true} />
               </TabPanel>
             </TabPanels>
