@@ -37,3 +37,12 @@ export interface IUserInfo extends Omit<IAuthUserInfo, 'token'> {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface ICollectionInfo {
+  id: number;
+  title: string;
+  description: string;
+  theme: string;
+  imgUrl: string;
+  username: string;
+}

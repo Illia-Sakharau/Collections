@@ -11,7 +11,7 @@ import BodyRaw from './components/BodyRaw';
 import HeaderRaw from './components/HeaderRaw';
 
 export type DataTableProps<Data extends object> = {
-  columns: ColumnDef<Data, any>[];
+  columns?: ColumnDef<Data, any>[];
   table: TableG<Data>;
   isSelected?: boolean;
 };
@@ -22,7 +22,7 @@ export function DataTable<Data extends object>({
   isSelected = false,
 }: DataTableProps<Data>) {
   if (isSelected) {
-    columns.unshift({
+    columns?.unshift({
       id: 'select-col',
       header: ({ table }: { table: TableG<Data> }) => (
         <Checkbox

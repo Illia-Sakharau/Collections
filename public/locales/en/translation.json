@@ -81,6 +81,13 @@
     "tabs": {
       "my": "My collections",
       "all": "All Collections"
+    },
+    "table": {
+      "image": "Image",
+      "title": "Title",
+      "description": "Description",
+      "theme": "Theme",
+      "owner": "Owner"
     }
   },
   "bulk_bar": {
