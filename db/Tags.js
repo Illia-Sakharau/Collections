@@ -2,15 +2,10 @@ import Sequelize from "sequelize";
 
 export default function (sequelize) {
   return sequelize.define('tags', {
-    id: {
-      type: Sequelize.INTEGER,
-      autoIncrement: true,
-      allowNull: false,
-      primaryKey: true
-    },
     name: {
       type: Sequelize.STRING(32),
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     }
   }, {
     tableName: 'tags',
