@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
 
 export default function (sequelize) {
-  return sequelize.define('Users', {
+  return sequelize.define('tags', {
     id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
