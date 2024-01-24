@@ -74,6 +74,21 @@ class collectionsController {
       res.status(400).json({message: 'Collections error'})
     }
   }
+  async deleteCollections (req, res) {
+    try {
+      const { IDs } = req.body;
+      await CollectionsTB.destroy({
+        where: {
+          id: IDs
+        },
+      });
+      
+      res.json(IDs)
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({message: 'Collections error'})
+    }
+  }
 }
 
 export default new collectionsController();

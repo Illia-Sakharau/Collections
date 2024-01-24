@@ -7,6 +7,7 @@ const router = new Router();
 
 router.get('/all', adminMiddleware, collectionsController.getAllCollections)
 router.get('/my', authMiddleware, collectionsController.getMyCollections)
-router.get('/biggest', authMiddleware, collectionsController.getBigestCollections)
+router.get('/biggest', collectionsController.getBigestCollections)
+router.delete('/delete', authMiddleware, collectionsController.deleteCollections)
 
 export default router;
