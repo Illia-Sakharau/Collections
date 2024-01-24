@@ -17,7 +17,12 @@ export const TagsTB = Tags(sequelize)
 export const CollectionsTB = Collections(sequelize)
 export const ThemesTB = Themes(sequelize)
 
-UsersTB.hasMany(CollectionsTB, {foreignKey: 'user_id'})
+UsersTB.hasMany(CollectionsTB, 
+  {
+    foreignKey: 'user_id',
+    onDelete: 'cascade'
+  }
+)
 CollectionsTB.belongsTo(UsersTB, {foreignKey: 'user_id'})
 
 ThemesTB.hasMany(CollectionsTB, {foreignKey: 'theme_id'})
