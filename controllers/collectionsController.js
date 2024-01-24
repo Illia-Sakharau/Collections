@@ -1,5 +1,6 @@
 import { CollectionsTB } from "../db/index.js";
 import { UsersTB } from "../db/index.js";
+import { ThemesTB } from "../db/index.js";
 
 class collectionsController {
   async getAllCollections (req, res) {
@@ -9,11 +10,13 @@ class collectionsController {
         limit: limit,
         offset: offset,
         attributes: {
-          exclude:['fields_map_id']
+          exclude:['fields_map_id', 'theme_id', 'user_id']
         },
         include: [{
           model: UsersTB,
           attributes: ['id', 'name']
+        }, {
+          model: ThemesTB,
         }]
       });
       res.json(collections)
