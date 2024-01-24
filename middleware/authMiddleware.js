@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import dotnet from 'dotenv';
+import { UsersTB } from "../db/index.js";
 
 dotnet.config()
 
