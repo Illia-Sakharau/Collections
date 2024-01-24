@@ -42,7 +42,25 @@ export interface ICollectionInfo {
   id: number;
   title: string;
   description: string;
-  theme: string;
+  theme: {
+    en: string;
+    ru: string;
+  };
   imgUrl: string;
   username: string;
+}
+export interface ICollectionsAllResp {
+  id: number;
+  title: string;
+  description: string;
+  imgUrl: string;
+  user: {
+    id: number;
+    name: string;
+  };
+  theme: {
+    id: number;
+    en_name: string;
+    ru_name: string;
+  };
 }

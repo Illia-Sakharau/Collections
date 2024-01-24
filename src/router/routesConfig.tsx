@@ -6,7 +6,7 @@ import ErrorPage from '@pages/ErrorPage';
 import LandingPage from '@pages/LandingPage';
 import LoginPage from '@pages/LoginPage';
 import RegistrationPage from '@pages/RegistrationPage';
-import CollectionsPage from '@pages/CollectionsPage';
+import CollectionsPage from '@/pages/collectionsPage/CollectionsPage';
 import CollectionPage from '@pages/CollectionPage';
 import NotFoundPage from '@pages/NotFoundPage';
 import SearchPage from '@pages/SearchPage';

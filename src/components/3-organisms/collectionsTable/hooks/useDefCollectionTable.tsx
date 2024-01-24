@@ -21,7 +21,7 @@ type Props = {
 
 const useDefUsersTable = ({ data, isAll }: Props) => {
   const [sorting, setSorting] = useState<SortingState>([]);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const columnHelper = createColumnHelper<ICollectionInfo>();
   const itemAction = useCollectionActions();
 
@@ -52,17 +52,23 @@ const useDefUsersTable = ({ data, isAll }: Props) => {
       enableSorting: false,
     }),
     columnHelper.accessor('theme', {
-      cell: (info) => <Tag border={'solid 1px'}>{info.getValue()}</Tag>,
+      cell: (info) => {
+        const currentLang = i18n.language.split('-')[0] as 'en' | 'ru';
+        return <Tag border={'solid 1px'}>{info.getValue()[currentLang]}</Tag>;
+      },
       header: t('collections.table.theme'),
     }),
   ];
 
   if (isAll)
     columns.push(
-      columnHelper.accessor('username', {
-        cell: (info) => info.getValue(),
-        header: t('collections.table.owner'),
-      })
+      columnHelper.accessor<(row: ICollectionInfo) => string, string>(
+        (row) => row.username,
+        {
+          cell: (info) => info.getValue(),
+          header: t('collections.table.owner'),
+        }
+      )
     );
 
   const table = useReactTable({

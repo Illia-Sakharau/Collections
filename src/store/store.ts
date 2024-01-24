@@ -4,6 +4,7 @@ import authAPI from '@/API/authAPI';
 import usersAPI from '@/API/usersAPI';
 import { usersListReducer } from './reducers/usersListSlice';
 import { collectionsListReducer } from './reducers/CollectionsListSlice';
+import collectionsAPI from '@/API/collectionsAPI';
 
 const rootReducer = combineReducers({
   userReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   collectionsListReducer,
   [authAPI.reducerPath]: authAPI.reducer,
   [usersAPI.reducerPath]: usersAPI.reducer,
+  [collectionsAPI.reducerPath]: collectionsAPI.reducer,
 });
 
 export const setupStore = () => {
@@ -19,7 +21,8 @@ export const setupStore = () => {
     middleware: (getDefaultsMiddleware) =>
       getDefaultsMiddleware()
         .concat(authAPI.middleware)
-        .concat(usersAPI.middleware),
+        .concat(usersAPI.middleware)
+        .concat(collectionsAPI.middleware),
   });
 };
 
