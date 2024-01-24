@@ -52,6 +52,28 @@ class collectionsController {
       res.status(400).json({message: 'Collections error'})
     }
   }
+  async getBigestCollections (req, res) {
+    try {
+      const { id } = req.user;
+      const collections = await CollectionsTB.findAll({
+        limit: 5,
+        offset: offset,
+        attributes: {
+          exclude:['fields_map_id', 'theme_id', 'user_id']
+        },
+        include: [{
+          model: UsersTB,
+          attributes: ['id', 'name']
+        }, {
+          model: ThemesTB,
+        }]
+      });
+      res.json(collections)
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({message: 'Collections error'})
+    }
+  }
 }
 
 export default new collectionsController();

@@ -7,5 +7,6 @@ const router = new Router();
 
 router.get('/all', adminMiddleware, collectionsController.getAllCollections)
 router.get('/my', authMiddleware, collectionsController.getMyCollections)
+router.get('/biggest', authMiddleware, collectionsController.getBigestCollections)
 
 export default router;
