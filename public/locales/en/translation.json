@@ -78,6 +78,7 @@
   },
   "collections": {
     "title": "Collections",
+    "cta": "Add New Collection",
     "tabs": {
       "my": "My collections",
       "all": "All Collections"

@@ -4,7 +4,7 @@ import { useGetMyCollectionsQuery } from '@/API/collectionsAPI';
 import collectionsAllAdapter from '@/utils/adapters/collectionsAllAdapter';
 
 export default () => {
-  const {data, isLoading, isError, error} = useGetMyCollectionsQuery();
+  const { data, isLoading, isError, error } = useGetMyCollectionsQuery();
 
   return (
     <>
