@@ -1,6 +1,5 @@
 import { CollectionsTB } from "../db/index.js";
-import { UsersTB } from "../db/index.js";
-import { ThemesTB } from "../db/index.js";
+import { UsersTB, ThemesTB } from "../db/index.js";
 
 class collectionsController {
   async getAllCollections (req, res) {
@@ -82,7 +81,7 @@ class collectionsController {
           id: IDs
         },
       });
-      
+
       res.json(IDs)
     } catch (error) {
       console.log(error);
