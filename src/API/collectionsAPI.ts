@@ -14,16 +14,23 @@ const collectionsAPI = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Collections'],
+  tagTypes: ['AllCollections', 'MyCollections'],
   endpoints: (build) => ({
     getAllCollections: build.query<ICollectionsAllResp[], void>({
       query: () => ({
         url: '/all',
       }),
-      providesTags: ['Collections'],
+      providesTags: ['AllCollections'],
+    }),
+    getMyCollections: build.query<ICollectionsAllResp[], void>({
+      query: () => ({
+        url: '/my',
+      }),
+      providesTags: ['MyCollections'],
     }),
   }),
 });
 
 export default collectionsAPI;
-export const { useGetAllCollectionsQuery } = collectionsAPI;
+export const { useGetAllCollectionsQuery, useGetMyCollectionsQuery } =
+  collectionsAPI;

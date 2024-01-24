@@ -1,17 +1,16 @@
 import CollectionsTable from '@organisms/collectionsTable/CollectionsTable';
-import { useAppSelector } from '@/hooks/redux';
 import PageLoading from '@/components/1-atoms/PageLoading';
+import { useGetMyCollectionsQuery } from '@/API/collectionsAPI';
+import collectionsAllAdapter from '@/utils/adapters/collectionsAllAdapter';
 
 export default () => {
-  const { collections, error, isLoading } = useAppSelector(
-    (state) => state.collectionsListReducer
-  );
+  const {data, isLoading, isError, error} = useGetMyCollectionsQuery();
 
   return (
     <>
       {isLoading && <PageLoading />}
-      {collections && <CollectionsTable data={collections} />}
-      {error && <div>{JSON.stringify(error)}</div>}
+      {data && <CollectionsTable data={collectionsAllAdapter(data)} />}
+      {isError && <div>{JSON.stringify(error)}</div>}
     </>
   );
 };

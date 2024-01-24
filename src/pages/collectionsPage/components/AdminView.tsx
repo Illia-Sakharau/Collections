@@ -1,16 +1,22 @@
 import CollectionsTable from '@organisms/collectionsTable/CollectionsTable';
 import { useTranslation } from 'react-i18next';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
-import { useAppSelector } from '@/hooks/redux';
 import PageLoading from '@/components/1-atoms/PageLoading';
-import { useGetAllCollectionsQuery } from '@/API/collectionsAPI';
+import {
+  useGetAllCollectionsQuery,
+  useGetMyCollectionsQuery,
+} from '@/API/collectionsAPI';
 import collectionsAllAdapter from '@/utils/adapters/collectionsAllAdapter';
 
 export default () => {
   const { t } = useTranslation();
-  const { collections, error, isLoading } = useAppSelector(
-    (state) => state.collectionsListReducer
-  );
+
+  const {
+    data: myCollections,
+    isLoading: isLoadingMy,
+    isError: isErrorMy,
+    error: errorMy,
+  } = useGetMyCollectionsQuery();
 
   const {
     data: allCollections,
@@ -27,9 +33,11 @@ export default () => {
       </TabList>
       <TabPanels>
         <TabPanel p={0} pt={4}>
-          {isLoading && <PageLoading />}
-          {collections && <CollectionsTable data={collections} />}
-          {error && <div>{JSON.stringify(error)}</div>}
+          {isLoadingMy && <PageLoading />}
+          {myCollections && (
+            <CollectionsTable data={collectionsAllAdapter(myCollections)} />
+          )}
+          {isErrorMy && <div>{JSON.stringify(errorMy)}</div>}
         </TabPanel>
         <TabPanel p={0} pt={4}>
           {isLoadingAll && <PageLoading />}
