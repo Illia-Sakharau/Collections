@@ -112,6 +112,7 @@
   },
   "other": {
     "passwordBtn": "Show/Hidden password button",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "step": "Step"
   }
 }

@@ -6,7 +6,7 @@ import AdminView from './components/AdminView';
 import UserView from './components/UserView';
 import { FaPlus } from 'react-icons/fa';
 import { useDisclosure } from '@chakra-ui/react';
-import CreateCollectionPopUp from '@organisms/createCollectionPopUp/createCollectionPopUp';
+import CreateCollectionPopUp from '@organisms/createCollectionPopUp/CreateCollectionPopUp';
 
 export default () => {
   const { t } = useTranslation();
