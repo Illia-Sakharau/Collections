@@ -98,9 +98,11 @@
     "popup": {
       "title": "Create collection",
       "step1": {
+        "title": "General Info",
         "btnText": "Next"
       },
       "step2": {
+        "title": "Collection fields",
         "btnText": "Create"
       }
     }
