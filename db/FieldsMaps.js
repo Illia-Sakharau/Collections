@@ -68,10 +68,6 @@ export default function (sequelize) {
       type: Sequelize.STRING(80),
       allowNull: true
     },
-    date_3: {
-      type: Sequelize.STRING(80),
-      allowNull: true
-    },
   }, {
     tableName: 'fields_maps',
     timestamps: false
