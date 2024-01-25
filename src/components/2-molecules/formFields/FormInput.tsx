@@ -1,31 +1,22 @@
 import { FC, useState } from 'react';
 import {
-  FormControl,
-  FormControlProps,
-  FormErrorMessage,
-  FormHelperText,
-  FormLabel,
   Input,
   InputGroup,
   InputProps,
 } from '@chakra-ui/react';
 import PasswordButton from './components/PasswordButton';
+import FieldWrapper, { FieldWrapperProps } from './components/FieldWrapper';
 
 type Props = {
-  label: string;
   htmlFor: string;
-  isRequired?: boolean;
   type: 'text' | 'email' | 'password';
-  errorText?: string;
-  helperText?: string;
-  formControlProps?: FormControlProps;
-} & Omit<InputProps, 'type'>;
+} & Omit<InputProps, 'type'> & Omit<FieldWrapperProps, 'children'>;
 
 const FormInput: FC<Props> = ({
-  label,
   htmlFor,
   type,
-  isRequired = false,
+  label,
+  isRequired,
   errorText,
   helperText,
   formControlProps,
@@ -34,12 +25,15 @@ const FormInput: FC<Props> = ({
   const [isShow, setIsShow] = useState(false);
 
   return (
-    <FormControl
+    <FieldWrapper 
+      htmlFor={htmlFor}
+      label={label}
       isRequired={isRequired}
-      isInvalid={!!errorText}
-      {...formControlProps}
-    >
-      <FormLabel htmlFor={htmlFor}>{label}</FormLabel>
+      errorText={errorText}
+      helperText={helperText}
+      formControlProps={formControlProps}
+  >
+
       <InputGroup>
         <Input
           id={htmlFor}
@@ -53,12 +47,7 @@ const FormInput: FC<Props> = ({
           <PasswordButton isShow={isShow} action={() => setIsShow(!isShow)} />
         )}
       </InputGroup>
-      {!errorText ? (
-        <FormHelperText>{helperText}</FormHelperText>
-      ) : (
-        <FormErrorMessage>{errorText}</FormErrorMessage>
-      )}
-    </FormControl>
+      </FieldWrapper>
   );
 };
 

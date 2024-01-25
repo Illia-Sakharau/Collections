@@ -1,4 +1,4 @@
-import FormInput from '@/components/2-molecules/formInput/FormInput';
+import FormInput from '@/components/2-molecules/formFields/FormInput';
 import useAuth from '@/hooks/useAuth';
 import { useFormik } from 'formik';
 import FormWrapper from './components/FormWrapper';

@@ -1,4 +1,4 @@
-import FormInput from '@/components/2-molecules/formInput/FormInput';
+import FormInput from '@/components/2-molecules/formFields/FormInput';
 import { Link } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { NavLink } from 'react-router-dom';
