@@ -1,16 +1,14 @@
 import { FC } from 'react';
-import {
-  Select,
-  SelectProps,
-} from '@chakra-ui/react';
+import { Select, SelectProps } from '@chakra-ui/react';
 import FieldWrapper, { FieldWrapperProps } from './components/FieldWrapper';
 
 type Props = {
   options: {
     value: string;
     text: string;
-  }[]
-} & SelectProps & Omit<FieldWrapperProps, 'children'>;
+  }[];
+} & SelectProps &
+  Omit<FieldWrapperProps, 'children'>;
 
 const FormSelector: FC<Props> = ({
   htmlFor,
@@ -22,9 +20,8 @@ const FormSelector: FC<Props> = ({
   options,
   ...selectProps
 }) => {
-
   return (
-    <FieldWrapper 
+    <FieldWrapper
       htmlFor={htmlFor}
       label={label}
       isRequired={isRequired}
@@ -32,13 +29,17 @@ const FormSelector: FC<Props> = ({
       helperText={helperText}
       formControlProps={formControlProps}
     >
-      <Select 
+      <Select
         id={htmlFor}
         name={htmlFor}
-        focusBorderColor="brand.500" 
+        focusBorderColor="brand.500"
         {...selectProps}
       >
-        {options.map((opt)=><option key={opt.value} value={opt.value}>{opt.text}</option>)}
+        {options.map((opt) => (
+          <option key={opt.value} value={opt.value}>
+            {opt.text}
+          </option>
+        ))}
       </Select>
     </FieldWrapper>
   );

@@ -9,21 +9,21 @@ const initialForm1: IForm1 = {
   title: '',
   description: '',
   theme: '',
-}
+};
 const initialForm2: IForm2 = {
   title: '',
-}
+};
 
 export default () => {
   const { t } = useTranslation();
   const [state, setState] = useState<IFormSubmit>({
     collection: initialForm1,
-    fields: initialForm2
+    fields: initialForm2,
   });
 
   const onSubmitStep1 = async (values: IForm1) => {
-    setState({...state, collection: values})
-  }
+    setState({ ...state, collection: values });
+  };
 
   const formikStep1: FormikProps<IForm1> = useFormik<IForm1>({
     initialValues: state.collection,
@@ -33,21 +33,20 @@ export default () => {
   const steps = [
     {
       title: t('collections.popup.step1.title'),
-      component: <FormStep1 formik={formikStep1}/>,
+      component: <FormStep1 formik={formikStep1} />,
       action: formikStep1.handleSubmit,
     },
     {
       title: t('collections.popup.step2.title'),
       component: <FormStep2 />,
       action: async () => {
-
         console.log(state);
 
-        formikStep1.resetForm({})
+        formikStep1.resetForm({});
         setState({
           collection: initialForm1,
-          fields: initialForm2
-        })
+          fields: initialForm2,
+        });
       },
     },
   ];

@@ -24,7 +24,7 @@ const CreateCollectionPopUp = ({ isOpen, onClose }: Props) => {
       setActiveStep(0);
       onClose();
     }
-  }
+  };
 
   return (
     <PopUp

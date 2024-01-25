@@ -24,9 +24,8 @@ const FieldWrapper: FC<FieldWrapperProps> = ({
   errorText,
   helperText,
   formControlProps,
-  children
+  children,
 }) => {
-
   return (
     <FormControl
       isRequired={isRequired}

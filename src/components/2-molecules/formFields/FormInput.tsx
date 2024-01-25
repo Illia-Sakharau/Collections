@@ -1,16 +1,13 @@
 import { FC, useState } from 'react';
-import {
-  Input,
-  InputGroup,
-  InputProps,
-} from '@chakra-ui/react';
+import { Input, InputGroup, InputProps } from '@chakra-ui/react';
 import PasswordButton from './components/PasswordButton';
 import FieldWrapper, { FieldWrapperProps } from './components/FieldWrapper';
 
 type Props = {
   htmlFor: string;
   type: 'text' | 'email' | 'password';
-} & Omit<InputProps, 'type'> & Omit<FieldWrapperProps, 'children'>;
+} & Omit<InputProps, 'type'> &
+  Omit<FieldWrapperProps, 'children'>;
 
 const FormInput: FC<Props> = ({
   htmlFor,
@@ -25,15 +22,14 @@ const FormInput: FC<Props> = ({
   const [isShow, setIsShow] = useState(false);
 
   return (
-    <FieldWrapper 
+    <FieldWrapper
       htmlFor={htmlFor}
       label={label}
       isRequired={isRequired}
       errorText={errorText}
       helperText={helperText}
       formControlProps={formControlProps}
-  >
-
+    >
       <InputGroup>
         <Input
           id={htmlFor}
@@ -47,7 +43,7 @@ const FormInput: FC<Props> = ({
           <PasswordButton isShow={isShow} action={() => setIsShow(!isShow)} />
         )}
       </InputGroup>
-      </FieldWrapper>
+    </FieldWrapper>
   );
 };
 
