@@ -5,10 +5,14 @@ import { useTranslation } from 'react-i18next';
 import AdminView from './components/AdminView';
 import UserView from './components/UserView';
 import { FaPlus } from 'react-icons/fa';
+import { useDisclosure } from '@chakra-ui/react';
+import CreateCollectionPopUp from '@organisms/createCollectionPopUp/createCollectionPopUp';
 
 export default () => {
   const { t } = useTranslation();
   const { isAdmin } = useAuth();
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
@@ -17,9 +21,7 @@ export default () => {
         ctaButtonInfo={{
           text: t('collections.cta'),
           icon: <FaPlus />,
-          action: () => {
-            console.log('123');
-          },
+          action: onOpen,
         }}
       />
       <SectionWrapper
@@ -29,6 +31,7 @@ export default () => {
       >
         {isAdmin ? <AdminView /> : <UserView />}
       </SectionWrapper>
+      <CreateCollectionPopUp isOpen={isOpen} onClose={onClose} />
     </>
   );
 };

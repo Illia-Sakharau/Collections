@@ -9,6 +9,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   isOpen: boolean;
@@ -27,6 +28,7 @@ const PopUp = ({
   action,
   children,
 }: Props) => {
+  const { t } = useTranslation();
   return (
     <Modal isOpen={isOpen} onClose={onClose} size={'xl'}>
       <ModalOverlay
@@ -40,7 +42,7 @@ const PopUp = ({
         <ModalBody pb={6}>{children}</ModalBody>
 
         <ModalFooter display={'flex'} justifyContent={'space-between'} gap={4}>
-          <Button onClick={onClose}>Cancel</Button>
+          <Button onClick={onClose}>{t('other.cancel')}</Button>
           <Button colorScheme="brand" onClick={action}>
             {buttonText}
           </Button>
