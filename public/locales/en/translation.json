@@ -108,8 +108,11 @@
         "theme_placeholder": "Choose theme"
       },
       "step2": {
-        "title": "Collection fields",
-        "btnText": "Create"
+        "title": "Items fields",
+        "btnText": "Create",
+        "buildin_text": "Items from your collection have the following build in fields: <1>name</1>, <1>tags</1>.",
+        "additional_text": "You can add additional fields if you want.",
+        "warning_text": "You cannot add additional fields after creating a table!"
       }
     }
   },
