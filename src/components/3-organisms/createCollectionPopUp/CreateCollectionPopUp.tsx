@@ -16,6 +16,15 @@ const CreateCollectionPopUp = ({ isOpen, onClose }: Props) => {
     index: 0,
     count: steps.length,
   });
+  const onBtnClick = async () => {
+    await steps[activeStep].action();
+    if (activeStep < steps.length - 1) {
+      setActiveStep(activeStep + 1);
+    } else {
+      setActiveStep(0);
+      onClose();
+    }
+  }
 
   return (
     <PopUp
@@ -23,14 +32,7 @@ const CreateCollectionPopUp = ({ isOpen, onClose }: Props) => {
       onClose={onClose}
       title={t('collections.popup.title')}
       buttonText={t(`collections.popup.step${activeStep + 1}.btnText`)}
-      action={async () => {
-        await steps[activeStep].action();
-        if (activeStep < steps.length - 1) {
-          setActiveStep(activeStep + 1);
-        } else {
-          onClose();
-        }
-      }}
+      action={onBtnClick}
     >
       <StepperMy
         steps={steps}

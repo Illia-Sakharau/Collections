@@ -99,7 +99,13 @@
       "title": "Создать коллекцию",
       "step1": {
         "title": "Основная информация",
-        "btnText": "Дальше"
+        "btnText": "Дальше",
+        "title_label": "Название",
+        "title_placeholder": "Введите имя новой коллекции",
+        "description_label": "Описание",
+        "description_placeholder": "Введите описание новой коллекции",
+        "theme_label": "Тема",
+        "theme_placeholder": "Выберите тему"
       },
       "step2": {
         "title": "Поля коллекции",

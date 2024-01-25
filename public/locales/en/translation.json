@@ -99,7 +99,13 @@
       "title": "Create collection",
       "step1": {
         "title": "General Info",
-        "btnText": "Next"
+        "btnText": "Next",
+        "title_label": "Title",
+        "title_placeholder": "Type name of new collection",
+        "description_label": "Discription",
+        "description_placeholder": "Type description of new collection",
+        "theme_label": "Theme",
+        "theme_placeholder": "Choose theme"
       },
       "step2": {
         "title": "Collection fields",
