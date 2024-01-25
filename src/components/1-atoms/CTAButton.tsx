@@ -17,7 +17,7 @@ const CTAButton = ({ text, action, icon }: Props) => {
           {text}
         </Button>
       ) : (
-        <IconButton colorScheme="brand" aria-label={text} icon={icon} />
+        <IconButton colorScheme="brand" onClick={action} aria-label={text} icon={icon} />
       )}
     </>
   );
