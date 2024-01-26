@@ -135,6 +135,7 @@
   "other": {
     "passwordBtn": "Show/Hidden password button",
     "cancel": "Cancel",
-    "step": "Step"
+    "step": "Step",
+    "loading": "Loading..."
   }
 }

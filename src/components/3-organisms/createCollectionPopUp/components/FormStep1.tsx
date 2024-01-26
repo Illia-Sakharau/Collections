@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { IForm1 } from '../types';
 import FormArea from '@/components/2-molecules/formFields/FormArea';
 import FormSelector from '@/components/2-molecules/formFields/FormSelector';
+import { useGetAllThemesQuery } from '@/API/themesAPI';
+import useCurentLanguage from '@/hooks/useCurentLanguage';
 
 type Props = {
   formik: FormikProps<IForm1>;
@@ -12,6 +14,8 @@ type Props = {
 const FormStep1 = ({ formik }: Props) => {
   const { t } = useTranslation();
   const dicPath = 'collections.popup.step1.';
+  const { data, isLoading } = useGetAllThemesQuery();
+  const currentLang = useCurentLanguage();
 
   return (
     <form
@@ -50,16 +54,15 @@ const FormStep1 = ({ formik }: Props) => {
         onChange={formik.handleChange}
         value={formik.values.theme}
         errorText={formik.touched.theme ? formik.errors.theme : undefined}
-        options={[
-          {
-            value: '1',
-            text: 'Value1',
-          },
-          {
-            value: '2',
-            text: 'Value2',
-          },
-        ]}
+        isLoading={isLoading}
+        options={
+          data
+            ? data.map((theme) => ({
+                value: `${theme.id}`,
+                text: theme[`${currentLang}_name`],
+              }))
+            : []
+        }
       />
       <FormInput
         label={t(dicPath + 'imageURL_label')}

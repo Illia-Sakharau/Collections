@@ -13,6 +13,7 @@ import DescriptionCell from '../../../2-molecules/tableCells/DescriptionCell';
 import { Tag } from '@chakra-ui/react';
 import useCollectionActions from './useCollectionActions';
 import ButtonMenu from '@/components/2-molecules/ButtonMenu';
+import useCurentLanguage from '@/hooks/useCurentLanguage';
 
 type Props = {
   data: ICollectionInfo[];
@@ -21,9 +22,10 @@ type Props = {
 
 const useDefUsersTable = ({ data, isAll }: Props) => {
   const [sorting, setSorting] = useState<SortingState>([]);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const columnHelper = createColumnHelper<ICollectionInfo>();
   const itemAction = useCollectionActions();
+  const currentLang = useCurentLanguage();
 
   const columns = [
     columnHelper.display({
@@ -53,7 +55,6 @@ const useDefUsersTable = ({ data, isAll }: Props) => {
     }),
     columnHelper.accessor('theme', {
       cell: (info) => {
-        const currentLang = i18n.language.split('-')[0] as 'en' | 'ru';
         return <Tag border={'solid 1px'}>{info.getValue()[currentLang]}</Tag>;
       },
       header: t('collections.table.theme'),

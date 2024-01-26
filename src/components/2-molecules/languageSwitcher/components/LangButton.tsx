@@ -2,12 +2,13 @@ import { FC } from 'react';
 import { Button, ButtonProps } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { languageInfo } from '@/types/componens';
+import useCurentLanguage from '@/hooks/useCurentLanguage';
 
 type Props = languageInfo & ButtonProps;
 
 const LangButton: FC<Props> = ({ value, text, ...props }) => {
   const { i18n } = useTranslation();
-  const currentLang = i18n.language.split('-')[0];
+  const currentLang = useCurentLanguage();
 
   return (
     <Button

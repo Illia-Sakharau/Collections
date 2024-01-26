@@ -49,6 +49,7 @@ export interface ICollectionInfo {
   imgUrl: string;
   username: string;
 }
+
 export interface ICollectionsAllResp {
   id: number;
   title: string;
@@ -63,4 +64,10 @@ export interface ICollectionsAllResp {
     en_name: string;
     ru_name: string;
   };
+}
+
+export interface IThemeResp {
+  id: number;
+  en_name: string;
+  ru_name: string;
 }

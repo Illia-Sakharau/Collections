@@ -1,10 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { userReducer } from './reducers/userSlice';
-import authAPI from '@/API/authAPI';
-import usersAPI from '@/API/usersAPI';
 import { usersListReducer } from './reducers/usersListSlice';
 import { collectionsListReducer } from './reducers/CollectionsListSlice';
+import authAPI from '@/API/authAPI';
+import usersAPI from '@/API/usersAPI';
 import collectionsAPI from '@/API/collectionsAPI';
+import themesAPI from '@/API/themesAPI';
 
 const rootReducer = combineReducers({
   userReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   [authAPI.reducerPath]: authAPI.reducer,
   [usersAPI.reducerPath]: usersAPI.reducer,
   [collectionsAPI.reducerPath]: collectionsAPI.reducer,
+  [themesAPI.reducerPath]: themesAPI.reducer,
 });
 
 export const setupStore = () => {
@@ -22,7 +24,8 @@ export const setupStore = () => {
       getDefaultsMiddleware()
         .concat(authAPI.middleware)
         .concat(usersAPI.middleware)
-        .concat(collectionsAPI.middleware),
+        .concat(collectionsAPI.middleware)
+        .concat(themesAPI.middleware),
   });
 };
 
