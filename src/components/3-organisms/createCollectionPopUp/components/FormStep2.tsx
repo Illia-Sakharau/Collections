@@ -1,4 +1,4 @@
-import { Button, VStack } from '@chakra-ui/react';
+import { Alert, AlertDescription, Button, VStack } from '@chakra-ui/react';
 import Step2Text from './Step2Text';
 import { useTranslation } from 'react-i18next';
 import { FaPlus } from 'react-icons/fa';
@@ -46,11 +46,19 @@ const FormStep2 = ({ formRef, onSubmit, initialValues }: Props) => {
                           key={index}
                           index={index}
                           remove={remove}
-                          errors={fieldError}
+                          errors={
+                            typeof fieldError === 'string'
+                              ? undefined
+                              : fieldError
+                          }
                         />
                       );
                     })}
-
+                  {typeof errors.fields === 'string' && (
+                    <Alert status="error">
+                      <AlertDescription>{errors.fields}</AlertDescription>
+                    </Alert>
+                  )}
                   <Button
                     leftIcon={<FaPlus />}
                     colorScheme="brand"

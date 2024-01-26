@@ -5,11 +5,13 @@ export interface IForm1 {
   imageURL: string | undefined;
 }
 
+export type Field = {
+  name: string;
+  type: 'integer' | 'string' | 'text' | 'boolean' | 'date';
+};
+
 export interface IForm2 {
-  fields: {
-    name: string;
-    type: string;
-  }[];
+  fields: Field[];
 }
 
 export interface IFormSubmit extends IForm2 {

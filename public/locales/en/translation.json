@@ -141,6 +141,9 @@
           },
           "type": {
             "required": "Field type is required field"
+          },
+          "fields": {
+            "max": "Maximum of 3 fields of each type"
           }
         }
       },

@@ -15,19 +15,15 @@ const FIELDS_TYPES = ['integer', 'string', 'text', 'boolean', 'date'];
 type Props = {
   index: number;
   remove: (index: number) => undefined;
-  errors?: string | FormikErrors<{ name: string; type: string }>;
+  errors?: FormikErrors<{ name: string; type: string }>;
 };
 
 const FormAdditionalField = ({ index, remove, errors }: Props) => {
   const { t } = useTranslation();
   const dicPath = 'collections.popup.step2.';
-  const errorText =
-    typeof errors === 'string'
-      ? errors
-      : errors
-        ? (errors.name ? errors.name + '. ' : '') +
-          (errors.type ? errors.type : '')
-        : undefined;
+  const errorText = errors
+    ? (errors.name ? errors.name + '. ' : '') + (errors.type ? errors.type : '')
+    : undefined;
 
   return (
     <FormControl isInvalid={!!errorText}>
