@@ -3,7 +3,7 @@ import FormStep1 from '../components/FormStep1';
 import FormStep2 from '../components/FormStep2';
 import { FormikProps, useFormik } from 'formik';
 import { IForm1, IForm2, IFormSubmit } from '../types';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const initialForm1: IForm1 = {
   title: '',
@@ -11,18 +11,34 @@ const initialForm1: IForm1 = {
   theme: '',
 };
 const initialForm2: IForm2 = {
-  title: '',
+  fields: [],
 };
 
 export default () => {
   const { t } = useTranslation();
   const [state, setState] = useState<IFormSubmit>({
     collection: initialForm1,
-    fields: initialForm2,
+    ...initialForm2,
   });
+  const form2Ref = useRef<FormikProps<IForm2>>(null);
 
   const onSubmitStep1 = async (values: IForm1) => {
     setState({ ...state, collection: values });
+  };
+
+  const onSubmitStep2 = async (values: IForm2) => {
+    setState({ ...state, ...values });
+  };
+
+  const onCreate = async () => {
+    console.log(state);
+
+    formikStep1.resetForm({});
+    form2Ref.current?.resetForm({});
+    setState({
+      collection: initialForm1,
+      ...initialForm2,
+    });
   };
 
   const formikStep1: FormikProps<IForm1> = useFormik<IForm1>({
@@ -38,16 +54,19 @@ export default () => {
     },
     {
       title: t('collections.popup.step2.title'),
-      component: <FormStep2 />,
-      action: async () => {
-        console.log(state);
-
-        formikStep1.resetForm({});
-        setState({
-          collection: initialForm1,
-          fields: initialForm2,
-        });
-      },
+      component: (
+        <FormStep2
+          onSubmit={onSubmitStep2}
+          formRef={form2Ref}
+          initialValues={initialForm2}
+        />
+      ),
+      action: form2Ref.current?.handleSubmit,
+    },
+    {
+      title: t('collections.popup.step3.title'),
+      component: <div>123</div>,
+      action: onCreate,
     },
   ];
   return steps;

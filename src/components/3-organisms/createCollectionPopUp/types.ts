@@ -5,10 +5,12 @@ export interface IForm1 {
 }
 
 export interface IForm2 {
-  title: string | undefined;
+  fields: {
+    name: string;
+    type: string;
+  }[];
 }
 
-export interface IFormSubmit {
+export interface IFormSubmit extends IForm2 {
   collection: IForm1;
-  fields: IForm2;
 }
