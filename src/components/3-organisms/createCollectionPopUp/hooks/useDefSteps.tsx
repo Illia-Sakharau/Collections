@@ -4,12 +4,13 @@ import FormStep2 from '../components/FormStep2';
 import { FormikProps, useFormik } from 'formik';
 import { IForm1, IForm2, IFormSubmit } from '../types';
 import { useRef, useState } from 'react';
+import Step3Info from '../components/Step3Info';
 
 const initialForm1: IForm1 = {
   title: '',
   description: '',
   theme: '',
-  imageURL: ''
+  imageURL: '',
 };
 const initialForm2: IForm2 = {
   fields: [],
@@ -62,11 +63,11 @@ export default () => {
           initialValues={initialForm2}
         />
       ),
-      action: form2Ref.current ? form2Ref.current.handleSubmit : ()=>{},
+      action: form2Ref.current ? form2Ref.current.handleSubmit : () => {},
     },
     {
       title: t('collections.popup.step3.title'),
-      component: <div>123</div>,
+      component: <Step3Info {...state} />,
       action: onCreate,
     },
   ];

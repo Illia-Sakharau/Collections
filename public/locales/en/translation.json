@@ -119,7 +119,11 @@
       },
       "step3": {
         "title": "Check info",
-        "btnText": "Create"
+        "btnText": "Create",
+        "collection_title": "Collection Info",
+        "items_title": "Items fields",
+        "name": "Name",
+        "tags": "Tags"
       }
     }
   },
