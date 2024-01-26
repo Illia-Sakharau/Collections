@@ -17,12 +17,14 @@ const CreateCollectionPopUp = ({ isOpen, onClose }: Props) => {
     count: steps.length,
   });
   const onBtnClick = async () => {
-    await steps[activeStep].action();
-    if (activeStep < steps.length - 1) {
-      setActiveStep(activeStep + 1);
-    } else {
-      setActiveStep(0);
-      onClose();
+    const doNext = steps[activeStep].action();
+    if (doNext) {
+      if (activeStep < steps.length - 1) {
+        setActiveStep(activeStep + 1);
+      } else {
+        setActiveStep(0);
+        onClose();
+      }
     }
   };
 

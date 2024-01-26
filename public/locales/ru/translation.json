@@ -107,7 +107,22 @@
         "theme_label": "Тема",
         "theme_placeholder": "Выберите тему",
         "imageURL_label": "Изображение",
-        "imageURL_placeholder": "Укажите URL-адрес изображения обложки"
+        "imageURL_placeholder": "Укажите URL-адрес изображения обложки",
+        "validation": {
+          "title": {
+            "required": "Название - обязательное поле",
+            "max": "Максимум 100 символов"
+          },
+          "description": {
+            "max": "Максимум 256 символов"
+          },
+          "theme": {
+            "required": "Тема - обязательное поле"
+          },
+          "imageURL": {
+            "url": "Неверный URL"
+          }
+        }
       },
       "step2": {
         "title": "Поля предметов коллекции",

@@ -107,7 +107,22 @@
         "theme_label": "Theme",
         "theme_placeholder": "Choose theme",
         "imageURL_label": "Image",
-        "imageURL_placeholder": "Provide image URL of cover"
+        "imageURL_placeholder": "Provide image URL of cover",
+        "validation": {
+          "title": {
+            "required": "Title is required field",
+            "max": "Maximum 100 characters"
+          },
+          "description": {
+            "max": "Maximum 256 characters"
+          },
+          "theme": {
+            "required": "Theme is required field"
+          },
+          "imageURL": {
+            "url": "Invalid URL"
+          }
+        }
       },
       "step2": {
         "title": "Items fields",

@@ -3,8 +3,9 @@ import FormStep1 from '../components/FormStep1';
 import FormStep2 from '../components/FormStep2';
 import { FormikProps, useFormik } from 'formik';
 import { IForm1, IForm2, IFormSubmit } from '../types';
-import { useRef, useState } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 import Step3Info from '../components/Step3Info';
+import { Step1Schema } from '../validationShemas';
 
 const initialForm1: IForm1 = {
   title: '',
@@ -16,7 +17,13 @@ const initialForm2: IForm2 = {
   fields: [],
 };
 
-export default () => {
+type Return = {
+  title: string;
+  component: ReactNode;
+  action: () => boolean;
+}[];
+
+export default (): Return => {
   const { t } = useTranslation();
   const [state, setState] = useState<IFormSubmit>({
     collection: initialForm1,
@@ -45,14 +52,18 @@ export default () => {
 
   const formikStep1: FormikProps<IForm1> = useFormik<IForm1>({
     initialValues: state.collection,
+    validationSchema: Step1Schema(t),
     onSubmit: onSubmitStep1,
   });
 
-  const steps = [
+  return [
     {
       title: t('collections.popup.step1.title'),
       component: <FormStep1 formik={formikStep1} />,
-      action: formikStep1.handleSubmit,
+      action: () => {
+        formikStep1.handleSubmit();
+        return formikStep1.isValid && formikStep1.dirty;
+      },
     },
     {
       title: t('collections.popup.step2.title'),
@@ -63,13 +74,20 @@ export default () => {
           initialValues={initialForm2}
         />
       ),
-      action: form2Ref.current ? form2Ref.current.handleSubmit : () => {},
+      action: () => {
+        if (form2Ref.current) {
+          form2Ref.current.handleSubmit();
+        }
+        return true;
+      },
     },
     {
       title: t('collections.popup.step3.title'),
       component: <Step3Info {...state} />,
-      action: onCreate,
+      action: () => {
+        onCreate();
+        return true;
+      },
     },
   ];
-  return steps;
 };
