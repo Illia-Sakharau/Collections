@@ -1,8 +1,6 @@
 import {
   VStack,
   Text,
-  Alert,
-  AlertDescription,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { Trans, useTranslation } from 'react-i18next';
@@ -19,17 +17,15 @@ const Step2Text = () => {
       borderColor={borderColor}
       borderRadius={8}
       mt={-4}
+      p={4}
     >
-      <Text px={4} pt={4}>
+      <Text>
         <Trans i18nKey={dicPath + 'buildin_text'}>
           Items from your collection have the following build in fields:
           <b>name</b>, <b>tags</b>.
         </Trans>
       </Text>
-      <Text px={4}>{t(dicPath + 'additional_text')}</Text>
-      <Alert status="error">
-        <AlertDescription>{t(dicPath + 'warning_text')}</AlertDescription>
-      </Alert>
+      <Text>{t(dicPath + 'additional_text')}</Text>
     </VStack>
   );
 };
