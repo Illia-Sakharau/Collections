@@ -3,6 +3,7 @@ import usersRouter from './routers/usersRouter.js';
 import authRouter from './routers/authRouter.js';
 import collectionsRouter from './routers/collectionsRouter.js';
 import tagsRouter from './routers/tagsRouter.js';
+import themesRouter from './routers/themesRouter.js';
 import dotnet from 'dotenv';
 import cors from 'cors';
 
@@ -21,5 +22,6 @@ app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/collections', collectionsRouter);
 app.use('/tags', tagsRouter);
+app.use('/themes', themesRouter);
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
