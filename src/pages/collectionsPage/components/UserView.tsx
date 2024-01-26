@@ -6,7 +6,7 @@ import collectionsAllAdapter from '@/utils/adapters/collectionsAllAdapter';
 export default () => {
   const { data, isLoading, isError, error } = useGetMyCollectionsQuery();
 
-  if (isError) throw error
+  if (isError) throw error;
   return (
     <>
       {isLoading && <PageLoading />}

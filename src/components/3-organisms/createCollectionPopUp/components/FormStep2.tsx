@@ -6,6 +6,7 @@ import { FieldArray, Form, Formik, FormikProps } from 'formik';
 import { IForm2 } from '../types';
 import FormAdditionalField from './FormAdditionalField';
 import { Ref } from 'react';
+import { Step2Schema } from '../validationShemas';
 
 type Props = {
   formRef: Ref<FormikProps<IForm2>>;
@@ -24,9 +25,10 @@ const FormStep2 = ({ formRef, onSubmit, initialValues }: Props) => {
       <Formik
         innerRef={formRef}
         initialValues={initialValues}
+        validationSchema={Step2Schema(t)}
         onSubmit={onSubmit}
       >
-        {({ values }) => (
+        {({ values, errors }) => (
           <Form
             noValidate
             style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
@@ -35,13 +37,19 @@ const FormStep2 = ({ formRef, onSubmit, initialValues }: Props) => {
               {({ remove, push }) => (
                 <>
                   {values.fields.length > 0 &&
-                    values.fields.map((_field, index) => (
-                      <FormAdditionalField
-                        key={index}
-                        index={index}
-                        remove={remove}
-                      />
-                    ))}
+                    values.fields.map((_field, index) => {
+                      const fieldError = errors.fields
+                        ? errors.fields[index]
+                        : undefined;
+                      return (
+                        <FormAdditionalField
+                          key={index}
+                          index={index}
+                          remove={remove}
+                          errors={fieldError}
+                        />
+                      );
+                    })}
 
                   <Button
                     leftIcon={<FaPlus />}

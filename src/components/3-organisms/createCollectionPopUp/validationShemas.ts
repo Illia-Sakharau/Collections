@@ -17,3 +17,15 @@ export const Step1Schema = (t: TFunction) =>
       }
     ),
   });
+
+export const Step2Schema = (t: TFunction) =>
+  Yup.object({
+    fields: Yup.array().of(
+      Yup.object({
+        name: Yup.string()
+          .required(t(dic1Path + 'title.required'))
+          .max(80, t(dic1Path + 'title.max')),
+        type: Yup.string().required(t(dic1Path + 'theme.required')),
+      })
+    ),
+  });

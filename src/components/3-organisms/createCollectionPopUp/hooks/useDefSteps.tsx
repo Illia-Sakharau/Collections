@@ -78,7 +78,7 @@ export default (): Return => {
         if (form2Ref.current) {
           form2Ref.current.handleSubmit();
         }
-        return true;
+        return !!form2Ref.current?.isValid;
       },
     },
     {
