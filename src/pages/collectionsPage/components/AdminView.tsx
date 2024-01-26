@@ -25,6 +25,8 @@ export default () => {
     error: errorAll,
   } = useGetAllCollectionsQuery();
 
+  if (isErrorMy) throw errorMy;
+  if (isErrorAll) throw errorAll;
   return (
     <Tabs variant="line" colorScheme="brand" isLazy>
       <TabList>
