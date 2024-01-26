@@ -62,7 +62,7 @@ export default () => {
           initialValues={initialForm2}
         />
       ),
-      action: form2Ref.current?.handleSubmit,
+      action: (form2Ref.current as FormikProps<IForm2>).handleSubmit,
     },
     {
       title: t('collections.popup.step3.title'),
