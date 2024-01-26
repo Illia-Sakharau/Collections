@@ -130,7 +130,19 @@
         "buildin_text": "Items from your collection have the following build in fields: <1>name</1>, <1>tags</1>.",
         "additional_text": "You can add additional fields if you want (up to 3 of each type).",
         "warning_text": "You cannot add additional fields after creating a table!",
-        "add_field_btn": "Add aditional field"
+        "add_field_btn": "Add aditional field",
+        "name_placeholder": "Type name of field",
+        "type_placeholder": "Choose type",
+        "delete_btn": "Delete additional field",
+        "validation": {
+          "name": {
+            "required": "Field name is required field",
+            "max": "Maximum 80 characters"
+          },
+          "type": {
+            "required": "Field type is required field"
+          }
+        }
       },
       "step3": {
         "title": "Check info",

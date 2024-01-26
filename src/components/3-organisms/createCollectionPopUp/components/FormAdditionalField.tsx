@@ -7,6 +7,7 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { Field, FormikErrors } from 'formik';
+import { useTranslation } from 'react-i18next';
 import { FaTrashAlt } from 'react-icons/fa';
 
 type Props = {
@@ -16,6 +17,8 @@ type Props = {
 };
 
 const FormAdditionalField = ({ index, remove, errors }: Props) => {
+  const { t } = useTranslation();
+  const dicPath = 'collections.popup.step2.';
   const errorText =
     typeof errors === 'string'
       ? errors
@@ -32,7 +35,7 @@ const FormAdditionalField = ({ index, remove, errors }: Props) => {
           name={`fields.${index}.name`}
           type={'text'}
           focusBorderColor="brand.500"
-          placeholder="Select type"
+          placeholder={t(dicPath + 'name_placeholder')}
         />
 
         <Select
@@ -41,7 +44,7 @@ const FormAdditionalField = ({ index, remove, errors }: Props) => {
           id={`fields.${index}.type`}
           name={`fields.${index}.type`}
           focusBorderColor="brand.500"
-          placeholder="Select type"
+          placeholder={t(dicPath + 'type_placeholder')}
         >
           <option value="opt1">Option 1</option>
           <option value="opt2">Option 2</option>
@@ -52,7 +55,7 @@ const FormAdditionalField = ({ index, remove, errors }: Props) => {
           colorScheme="negative"
           variant="outline"
           onClick={() => remove(index)}
-          aria-label={'fdsf'}
+          aria-label={t(dicPath + 'delete_btn')}
           icon={<FaTrashAlt />}
         />
       </InputGroup>

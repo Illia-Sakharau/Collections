@@ -2,6 +2,7 @@ import { TFunction } from 'i18next';
 import * as Yup from 'yup';
 
 const dic1Path = 'collections.popup.step1.validation.';
+const dic2Path = 'collections.popup.step2.validation.';
 
 export const Step1Schema = (t: TFunction) =>
   Yup.object({
@@ -23,9 +24,9 @@ export const Step2Schema = (t: TFunction) =>
     fields: Yup.array().of(
       Yup.object({
         name: Yup.string()
-          .required(t(dic1Path + 'title.required'))
-          .max(80, t(dic1Path + 'title.max')),
-        type: Yup.string().required(t(dic1Path + 'theme.required')),
+          .required(t(dic2Path + 'name.required'))
+          .max(80, t(dic2Path + 'name.max')),
+        type: Yup.string().required(t(dic2Path + 'type.required')),
       })
     ),
   });
