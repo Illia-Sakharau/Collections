@@ -31,7 +31,6 @@ const FormStep1 = ({ formik }: Props) => {
         errorText={formik.touched.title ? formik.errors.title : undefined}
       />
       <FormArea
-        isRequired
         label={t(dicPath + 'description_label')}
         htmlFor="description"
         placeholder={t(dicPath + 'description_placeholder')}
@@ -61,6 +60,16 @@ const FormStep1 = ({ formik }: Props) => {
             text: 'Value2',
           },
         ]}
+      />
+      <FormInput
+        label={t(dicPath + 'imageURL_label')}
+        htmlFor="imageURL"
+        type={'text'}
+        placeholder={t(dicPath + 'imageURL_placeholder')}
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
+        value={formik.values.imageURL}
+        errorText={formik.touched.imageURL ? formik.errors.imageURL : undefined}
       />
     </form>
   );

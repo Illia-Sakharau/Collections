@@ -105,7 +105,9 @@
         "description_label": "Description",
         "description_placeholder": "Type description of new collection",
         "theme_label": "Theme",
-        "theme_placeholder": "Choose theme"
+        "theme_placeholder": "Choose theme",
+        "imageURL_label": "Image",
+        "imageURL_placeholder": "Provide image URL of cover"
       },
       "step2": {
         "title": "Items fields",

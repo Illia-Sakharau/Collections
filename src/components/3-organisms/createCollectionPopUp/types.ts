@@ -2,6 +2,7 @@ export interface IForm1 {
   title: string | undefined;
   description: string | undefined;
   theme: string | undefined;
+  imageURL: string | undefined;
 }
 
 export interface IForm2 {

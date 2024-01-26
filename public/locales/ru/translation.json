@@ -105,7 +105,9 @@
         "description_label": "Описание",
         "description_placeholder": "Введите описание новой коллекции",
         "theme_label": "Тема",
-        "theme_placeholder": "Выберите тему"
+        "theme_placeholder": "Выберите тему",
+        "imageURL_label": "Изображение",
+        "imageURL_placeholder": "Укажите URL-адрес изображения обложки"
       },
       "step2": {
         "title": "Поля предметов коллекции",

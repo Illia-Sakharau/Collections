@@ -9,6 +9,7 @@ const initialForm1: IForm1 = {
   title: '',
   description: '',
   theme: '',
+  imageURL: ''
 };
 const initialForm2: IForm2 = {
   fields: [],
