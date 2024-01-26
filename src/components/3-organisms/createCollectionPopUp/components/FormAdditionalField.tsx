@@ -10,6 +10,8 @@ import { Field, FormikErrors } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { FaTrashAlt } from 'react-icons/fa';
 
+const FIELDS_TYPES = ['integer', 'string', 'text', 'boolean', 'date'];
+
 type Props = {
   index: number;
   remove: (index: number) => undefined;
@@ -46,11 +48,12 @@ const FormAdditionalField = ({ index, remove, errors }: Props) => {
           focusBorderColor="brand.500"
           placeholder={t(dicPath + 'type_placeholder')}
         >
-          <option value="opt1">Option 1</option>
-          <option value="opt2">Option 2</option>
-          <option value="opt3">Option 3</option>
+          {FIELDS_TYPES.map((type) => (
+            <option key={type} value={type}>
+              {t(`fields_types.${type}`)}
+            </option>
+          ))}
         </Select>
-
         <IconButton
           colorScheme="negative"
           variant="outline"

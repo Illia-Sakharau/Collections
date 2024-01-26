@@ -159,6 +159,13 @@
     "button_text": "Actions",
     "message": "Choose at least one item!"
   },
+  "fields_types": {
+    "integer": "Number",
+    "string": "Short text",
+    "text": "Long text",
+    "boolean": "Boolean",
+    "date": "Date"
+  },
   "other": {
     "passwordBtn": "Show/Hidden password button",
     "cancel": "Cancel",

@@ -55,7 +55,7 @@ const Step3Info = ({ collection, fields }: IFormSubmit) => {
       <UnorderedList>
         {fields.map((field, i) => (
           <ListItem key={i}>
-            {field.name} ({field.type})
+            {field.name} ({t(`fields_types.${field.type}`)})
           </ListItem>
         ))}
       </UnorderedList>
