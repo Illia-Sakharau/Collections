@@ -39,6 +39,16 @@ const collectionsAPI = createApi({
       }),
       invalidatesTags: ['AllCollections', 'MyCollections'],
     }),
+    deleteCollections: build.mutation<number[], number[]>({
+      query: (IDs) => ({
+        url: `/delete`,
+        method: 'DELETE',
+        body: {
+          IDs,
+        },
+      }),
+      invalidatesTags: ['AllCollections', 'MyCollections'],
+    }),
   }),
 });
 
@@ -47,4 +57,5 @@ export const {
   useGetAllCollectionsQuery,
   useGetMyCollectionsQuery,
   useCreateCollectionMutation,
+  useDeleteCollectionsMutation
 } = collectionsAPI;
