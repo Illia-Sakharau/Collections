@@ -71,3 +71,31 @@ export interface IThemeResp {
   en_name: string;
   ru_name: string;
 }
+
+export interface ICreateColletionReques {
+  collectionInfo: {
+    title: string;
+    description?: string;
+    theme_id: number;
+    image_url?: string;
+  };
+  fieldsMap: IFieldsMap;
+}
+
+export interface IFieldsMap {
+  integer_1?: string;
+  integer_2?: string;
+  integer_3?: string;
+  string_1?: string;
+  string_2?: string;
+  string_3?: string;
+  text_1?: string;
+  text_2?: string;
+  text_3?: string;
+  boolean_1?: string;
+  boolean_2?: string;
+  boolean_3?: string;
+  date_1?: string;
+  date_2?: string;
+  date_3?: string;
+}

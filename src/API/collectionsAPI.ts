@@ -1,5 +1,5 @@
 import { RootState } from '@/store/store';
-import { ICollectionsAllResp } from '@/types/api';
+import { ICollectionsAllResp, ICreateColletionReques } from '@/types/api';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const collectionsAPI = createApi({
@@ -28,9 +28,23 @@ const collectionsAPI = createApi({
       }),
       providesTags: ['MyCollections'],
     }),
+    createCollection: build.mutation<
+      ICollectionsAllResp,
+      ICreateColletionReques
+    >({
+      query: (body) => ({
+        url: `/create`,
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['AllCollections', 'MyCollections'],
+    }),
   }),
 });
 
 export default collectionsAPI;
-export const { useGetAllCollectionsQuery, useGetMyCollectionsQuery } =
-  collectionsAPI;
+export const {
+  useGetAllCollectionsQuery,
+  useGetMyCollectionsQuery,
+  useCreateCollectionMutation,
+} = collectionsAPI;

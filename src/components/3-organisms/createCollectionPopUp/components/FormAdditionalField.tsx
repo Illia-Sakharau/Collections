@@ -10,7 +10,7 @@ import { Field, FormikErrors } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { FaTrashAlt } from 'react-icons/fa';
 
-const FIELDS_TYPES = ['integer', 'string', 'text', 'boolean', 'date'];
+export const FIELDS_TYPES = ['integer', 'string', 'text', 'boolean', 'date'];
 
 type Props = {
   index: number;

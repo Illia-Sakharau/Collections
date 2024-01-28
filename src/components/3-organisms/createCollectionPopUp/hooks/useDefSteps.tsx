@@ -6,6 +6,8 @@ import { IForm1, IForm2, IFormSubmit } from '../types';
 import { ReactNode, useRef, useState } from 'react';
 import Step3Info from '../components/Step3Info';
 import { Step1Schema } from '../validationShemas';
+import { useCreateCollectionMutation } from '@/API/collectionsAPI';
+import adapterCreateInfo from '../utils/adapterCreateInfo';
 
 const initialForm1: IForm1 = {
   title: '',
@@ -30,6 +32,7 @@ export default (): Return => {
     ...initialForm2,
   });
   const form2Ref = useRef<FormikProps<IForm2>>(null);
+  const [createCollection] = useCreateCollectionMutation();
 
   const onSubmitStep1 = async (values: IForm1) => {
     setState({ ...state, collection: values });
@@ -37,10 +40,11 @@ export default (): Return => {
 
   const onSubmitStep2 = async (values: IForm2) => {
     setState({ ...state, ...values });
+    console.log(adapterCreateInfo(state));
   };
 
   const onCreate = async () => {
-    console.log(state);
+    createCollection(adapterCreateInfo(state));
 
     formikStep1.resetForm({});
     form2Ref.current?.resetForm({});

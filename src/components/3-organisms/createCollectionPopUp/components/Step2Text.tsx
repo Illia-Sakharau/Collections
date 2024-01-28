@@ -1,8 +1,4 @@
-import {
-  VStack,
-  Text,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import { VStack, Text, useColorModeValue } from '@chakra-ui/react';
 import { Trans, useTranslation } from 'react-i18next';
 
 const Step2Text = () => {
