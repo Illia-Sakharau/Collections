@@ -1,5 +1,4 @@
-import { CollectionsTB } from "../db/index.js";
-import { UsersTB, ThemesTB } from "../db/index.js";
+import { CollectionsTB, UsersTB, ThemesTB, FieldsMapsTB } from "../db/index.js";
 
 class collectionsController {
   async getAllCollections (req, res) {
@@ -86,6 +85,24 @@ class collectionsController {
     } catch (error) {
       console.log(error);
       res.status(400).json({message: 'Collections error'})
+    }
+  }
+  async createCollection (req, res) {
+    try {
+      const {collectionInfo, fieldsMap} = req.body;
+      const {id} = req.user;
+
+      const fields_map = await FieldsMapsTB.create(fieldsMap);
+      const collection = await CollectionsTB.create({
+        user_id: id,
+        ...collectionInfo,
+        fields_map_id: fields_map.id
+      });
+
+      return res.json(collection)
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({message: 'Registration error'})
     }
   }
 }
