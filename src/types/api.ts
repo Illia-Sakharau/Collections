@@ -54,7 +54,7 @@ export interface ICollectionsAllResp {
   id: number;
   title: string;
   description: string;
-  imgUrl: string;
+  image_url: string;
   user: {
     id: number;
     name: string;
