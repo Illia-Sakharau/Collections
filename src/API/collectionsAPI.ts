@@ -57,5 +57,5 @@ export const {
   useGetAllCollectionsQuery,
   useGetMyCollectionsQuery,
   useCreateCollectionMutation,
-  useDeleteCollectionsMutation
+  useDeleteCollectionsMutation,
 } = collectionsAPI;

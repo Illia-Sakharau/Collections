@@ -168,6 +168,11 @@
     "boolean": "Boolean",
     "date": "Date"
   },
+  "herro_banner": {
+    "title": "Organize Your Collections Effortlessly",
+    "description": "Take control of your collec tions like never before with Coll’s. From rare artifacts to personal treasures, our platform empowers you to manage, explore, and share your collections seamlessly.",
+    "btn_text": "Get started now!"
+  },
   "other": {
     "passwordBtn": "Show/Hidden password button",
     "cancel": "Cancel",
